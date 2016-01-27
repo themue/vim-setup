@@ -20,6 +20,7 @@ filetype plugin indent on
 colorscheme antares
 syntax on
 let g:SuperTabDefaultCompletionType = "<C-X><C-O>"
+let g:erlang_tags_ignore = "_build"
 autocmd BufWritePre * :%s/\s\+$//e
 set wildignore+=*/logs/*,*.beam
 "
@@ -55,7 +56,10 @@ nmap <leader>p :bprevious<CR>
 nmap <leader>x :ccl<CR>
 nmap <leader>ev :tabedit $MYVIMRC<CR>
 nmap <leader>sv :source $MYVIMRC<CR>
+
+
 nnoremap <leader>d g<C-]>
+nnoremap <leader>. :CtrlPTag<cr>
 "
 " EOF
 "
