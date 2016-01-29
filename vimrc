@@ -48,10 +48,12 @@ nmap <F12> :cnext<CR>
 nmap <S-F12> :cnfile<CR>
 nmap <C-F12> :cnewer<CR>
 
-nmap <silent> <C-h> :wincmd h<CR>
-nmap <silent> <C-j> :wincmd j<CR>
-nmap <silent> <C-k> :wincmd k<CR>
-nmap <silent> <C-l> :wincmd l<CR>
+map <C-J> <C-W>j<C-W>_
+map <C-K> <C-W>k<C-W>_
+map <C-L> <C-W>l<C-W>_
+map <C-H> <C-W>h<C-W>_
+map <S-H> gT
+map <S-L> gt
 
 nmap <leader>n :bnext<CR>
 nmap <leader>p :bprevious<CR>
