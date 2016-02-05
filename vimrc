@@ -20,7 +20,6 @@ filetype plugin indent on
 colorscheme antares
 syntax on
 let g:SuperTabDefaultCompletionType = "<C-X><C-O>"
-let g:airline#extensions#tabline#enabled = 1
 let g:erlang_tags_ignore = "_build"
 let g:airline_theme = "sol"
 autocmd BufWritePre * :%s/\s\+$//e
