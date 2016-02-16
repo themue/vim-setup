@@ -16,28 +16,32 @@ set nofoldenable
 set foldlevel=0
 set guifont=Hack:h13
 set shell=bash
+set incsearch  ignorecase  smartcase  hlsearch
+set wildignore+=*/logs/*,*.beam
 filetype plugin indent on
 colorscheme antares
 syntax on
+let mapleader = "-"
 let g:SuperTabDefaultCompletionType = "<C-X><C-O>"
 let g:erlang_tags_ignore = "_build"
 let g:airline_theme = "sol"
 autocmd BufWritePre * :%s/\s\+$//e
-set wildignore+=*/logs/*,*.beam
 "
 " Key mappings.
 "
-vnoremap <leader>y  "+y
-nnoremap <leader>Y  "+yg_
-nnoremap <leader>y  "+y
-nnoremap <leader>yy  "+yy
-nnoremap <leader>p "+p
-nnoremap <leader>P "+P
-vnoremap <leader>p "+p
-vnoremap <leader>P "+P
+vnoremap <LEADER>y  "+y
+nnoremap <LEADER>Y  "+yg_
+nnoremap <LEADER>y  "+y
+nnoremap <LEADER>yy  "+yy
+nnoremap <LEADER>p "+p
+nnoremap <LEADER>P "+P
+vnoremap <LEADER>p "+p
+vnoremap <LEADER>P "+P
 
 inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
+nmap <F2> :%s//gc<LEFT><LEFT><LEFT>
+nmap <expr>  <S-F2>  ':%s/' . @/ . '//gc<LEFT><LEFT><LEFT>'
 nmap <F4> :TagbarToggle<CR>
 nmap <F10> :qa<CR>
 nmap <F11> :cprev<CR>
@@ -54,15 +58,15 @@ map <C-H> <C-W>h<C-W>_
 map <S-H> gT
 map <S-L> gt
 
-nmap <leader>n :bnext<CR>
-nmap <leader>p :bprevious<CR>
-nmap <leader>x :ccl<CR>
-nmap <leader>ev :tabedit $MYVIMRC<CR>
-nmap <leader>sv :source $MYVIMRC<CR>
+nmap <LEADER>n :bnext<CR>
+nmap <LEADER>p :bprevious<CR>
+nmap <LEADER>x :ccl<CR>
+nmap <LEADER>ev :tabedit $MYVIMRC<CR>
+nmap <LEADER>sv :source $MYVIMRC<CR>
 
 
-nnoremap <leader>d g<C-]>
-nnoremap <leader>. :CtrlPTag<cr>
+nnoremap <LEADER>d g<C-]>
+nnoremap <LEADER>. :CtrlPTag<cr>
 "
 " EOF
 "
