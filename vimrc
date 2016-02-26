@@ -4,9 +4,11 @@
 execute pathogen#infect()
 filetype off
 filetype plugin indent off
+set autoread
 set incsearch
 set ignorecase
 set smartcase
+set hlsearch
 set number
 set cursorline
 set omnifunc=syntaxcomplete#Complete
@@ -16,7 +18,6 @@ set nofoldenable
 set foldlevel=0
 set guifont=Hack:h13
 set shell=bash
-set incsearch  ignorecase  smartcase  hlsearch
 set wildignore+=*/logs/*,*.beam
 filetype plugin indent on
 colorscheme antares
@@ -41,7 +42,7 @@ vnoremap <LEADER>P "+P
 inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
 nmap <F2> :%s//gc<LEFT><LEFT><LEFT>
-nmap <expr>  <S-F2>  ':%s/' . @/ . '//gc<LEFT><LEFT><LEFT>'
+nmap <expr> <S-F2>  ':%s/' . @/ . '//gc<LEFT><LEFT><LEFT>'
 nmap <F4> :TagbarToggle<CR>
 nmap <F10> :qa<CR>
 nmap <F11> :cprev<CR>
@@ -64,9 +65,9 @@ nmap <LEADER>x :ccl<CR>
 nmap <LEADER>ev :tabedit $MYVIMRC<CR>
 nmap <LEADER>sv :source $MYVIMRC<CR>
 
-
+nnoremap <LEADER>. :CtrlPBuffer<cr>
+nnoremap <LEADER>: :CtrlPTag<cr>
 nnoremap <LEADER>d g<C-]>
-nnoremap <LEADER>. :CtrlPTag<cr>
 "
 " EOF
 "

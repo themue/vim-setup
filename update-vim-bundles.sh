@@ -2,6 +2,9 @@
 #
 # Iterate over the bundles in ~/.vim/bundles and update them.
 #
+echo "Updating the vim setup"
+git pull
+cp vimrc ~/.vimrc
 echo "Updating vim bundles ..."
 for path in ~/.vim/bundle/*; do
 	# Check for directory.
