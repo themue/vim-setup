@@ -1,6 +1,6 @@
-"
+" ==================================================
 " .vimrc / init.vim
-"
+" ==================================================
 execute pathogen#infect()
 filetype off
 filetype plugin indent off
@@ -27,8 +27,12 @@ let g:SuperTabDefaultCompletionType = "<C-X><C-O>"
 let g:erlang_tags_ignore = "_build"
 let g:airline_theme = "sol"
 autocmd BufWritePre * :%s/\s\+$//e
+" --------------------------------------------------
+" Key mappings
+" --------------------------------------------------
+
 "
-" Key mappings.
+" Yank and paste
 "
 vnoremap <LEADER>y  "+y
 nnoremap <LEADER>Y  "+yg_
@@ -41,16 +45,27 @@ vnoremap <LEADER>P "+P
 
 inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
+"
+" Searching
+"
 nmap <F2> :%s//gc<LEFT><LEFT><LEFT>
 nmap <expr> <S-F2>  ':%s/' . @/ . '//gc<LEFT><LEFT><LEFT>'
+nnoremap n nzzzv
+nnoremap N Nzzzv
+
 nmap <F4> :TagbarToggle<CR>
 nmap <F10> :qa<CR>
+
+"
+" Console
+"
 nmap <F11> :cprev<CR>
 nmap <S-F11> :cpfile<CR>
 nmap <C-F11> :colder<CR>
 nmap <F12> :cnext<CR>
 nmap <S-F12> :cnfile<CR>
 nmap <C-F12> :cnewer<CR>
+nmap <LEADER>x :ccl<CR>
 
 map <C-J> <C-W>j<C-W>_
 map <C-K> <C-W>k<C-W>_
@@ -58,16 +73,37 @@ map <C-L> <C-W>l<C-W>_
 map <C-H> <C-W>h<C-W>_
 map <S-H> gT
 map <S-L> gt
+nnoremap <LEADER>d g<C-]>
 
+"
+" Buffers
+"
 nmap <LEADER>n :bnext<CR>
 nmap <LEADER>p :bprevious<CR>
-nmap <LEADER>x :ccl<CR>
-nmap <LEADER>ev :tabedit $MYVIMRC<CR>
-nmap <LEADER>sv :source $MYVIMRC<CR>
+
+"
+" CtrlP
+"
+let g:ctrlp_buftag_types = {'go' : '--language-force=go --golang-types=ft'}
 
 nnoremap <LEADER>. :CtrlPBuffer<cr>
 nnoremap <LEADER>: :CtrlPTag<cr>
-nnoremap <LEADER>d g<C-]>
+nnoremap <LEADER># :CtrlPBufTag<cr>
+
+"
+" Edit and source .vimrc
+"
+nmap <LEADER>ev :tabedit $MYVIMRC<CR>
+nmap <LEADER>sv :source $MYVIMRC<CR>
+
+" --------------------------------------------------
+" Actions
+" --------------------------------------------------
+"
+if has("autocmd")
+	" When editing a file, always jump to the last cursor position
+	autocmd BufReadPost * if line("'\"") | exe "'\"" | endif
+endif
 "
 " EOF
 "
