@@ -18,6 +18,8 @@ set nofoldenable
 set foldlevel=0
 set guifont=Hack:h13
 set shell=bash
+set mouse=a
+set ttymouse=xterm2
 set wildignore+=*/logs/*,*.beam
 filetype plugin indent on
 colorscheme antares
