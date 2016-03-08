@@ -22,12 +22,16 @@ set mouse=a
 set ttymouse=xterm2
 set wildignore+=*/logs/*,*.beam
 filetype plugin indent on
+set tabstop=4
+set shiftwidth=4
+set expandtab
 colorscheme antares
 syntax on
 let mapleader = "-"
+let g:airline#extensions#tabline#enabled = 1
 let g:SuperTabDefaultCompletionType = "<C-X><C-O>"
 let g:erlang_tags_ignore = "_build"
-let g:airline_theme = "sol"
+let g:airline_theme = "bubblegum"
 autocmd BufWritePre * :%s/\s\+$//e
 " --------------------------------------------------
 " Key mappings
