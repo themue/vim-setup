@@ -30,7 +30,6 @@ if &t_Co >= 256
   hi Title            ctermbg=NONE ctermfg=109  cterm=NONE
 
   hi LineNr           ctermbg=NONE ctermfg=241  cterm=NONE
-  hi CursorLineNr     ctermbg=NONE ctermfg=214  cterm=NONE
   hi MatchParen       ctermbg=NONE ctermfg=34   cterm=NONE
   hi Conceal          ctermbg=NONE ctermfg=245  cterm=NONE
   hi SpecialKey       ctermbg=NONE ctermfg=240  cterm=NONE
@@ -86,6 +85,7 @@ if &t_Co >= 256
   hi Cursor           ctermbg=231  ctermfg=NONE cterm=NONE
   hi CursorColumn     ctermbg=232  ctermfg=NONE cterm=NONE
   hi CursorLine       ctermbg=232  ctermfg=NONE cterm=NONE
+  hi CursorLineNr     ctermbg=232  ctermfg=214  cterm=NONE
 
   hi helpleadblank    ctermbg=NONE ctermfg=NONE cterm=NONE
   hi helpnormal       ctermbg=NONE ctermfg=NONE cterm=NONE
