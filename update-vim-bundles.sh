@@ -5,6 +5,7 @@
 echo "Updating the vim setup"
 git pull
 cp vimrc ~/.vimrc
+cp muedark.vim ~/.vimrc/colors
 echo "Updating vim bundles ..."
 for path in ~/.vim/bundle/*; do
 	# Check for directory.

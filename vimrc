@@ -25,7 +25,7 @@ filetype plugin indent on
 set tabstop=4
 set shiftwidth=4
 set expandtab
-colorscheme antares
+colorscheme muedark
 syntax on
 let mapleader = "-"
 let g:airline#extensions#tabline#enabled = 1

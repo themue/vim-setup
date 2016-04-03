@@ -3,9 +3,11 @@
 # Setup my vim environment.
 #
 echo "Setting up vim environment ..."
-cp vimrc ~/.vimrc
 echo "Installing pathogen ..."
 mkdir -p ~/.vim/autoload ~/.vim/bundle ~/.vim/colors ~/.vim/sessions
+echo "Installing vimrc and colors ..."
+cp vimrc ~/.vimrc
+cp muedark.vim ~/.vim/colors
 cd ~/.vim/autoload
 curl -LSso pathogen.vim https://tpo.pe/pathogen.vim
 echo "Fetching the bundles ..."
@@ -30,9 +32,6 @@ git clone git://github.com/tpope/vim-sensible.git
 git clone https://github.com/tpope/vim-surround.git
 git clone git://github.com/tpope/vim-vinegar.git
 git clone https://github.com/vimoutliner/vimoutliner.git
-echo "Fetching the colors ... "
-cd ~/.vim/colors
-curl -LSso antares.vim https://raw.githubusercontent.com/Haron-Prime/Antares/master/colors/antares.vim
 echo "Done!"
 #
 # EOF
