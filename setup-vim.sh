@@ -25,12 +25,12 @@ git clone https://github.com/vim-erlang/vim-erlang-runtime.git
 git clone https://github.com/vim-erlang/vim-erlang-skeletons.git
 git clone https://github.com/vim-erlang/vim-erlang-tags.git
 git clone https://github.com/TheMue/vim-gode.git
-git clone git://github.com/tpope/vim-fugitive.git
+git clone https://github.com/tpope/vim-fugitive.git
 git clone https://github.com/fishcakez/vim-rebar.git
-git clone git://github.com/tpope/vim-scriptease.git
-git clone git://github.com/tpope/vim-sensible.git
+git clone https://github.com/tpope/vim-scriptease.git
+git clone https://github.com/tpope/vim-sensible.git
 git clone https://github.com/tpope/vim-surround.git
-git clone git://github.com/tpope/vim-vinegar.git
+git clone https://github.com/tpope/vim-vinegar.git
 git clone https://github.com/vimoutliner/vimoutliner.git
 echo "Done!"
 #

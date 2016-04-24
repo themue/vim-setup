@@ -25,11 +25,14 @@ filetype plugin indent on
 set tabstop=4
 set shiftwidth=4
 set expandtab
+
 colorscheme muedark
 syntax on
+
 let mapleader = "-"
+let maplocalleader = "."
 let g:airline#extensions#tabline#enabled = 1
-let g:SuperTabDefaultCompletionType = "<C-X><C-O>"
+let g:SuperTabDefaultCompletionType = "<C-X><C-N>"
 let g:erlang_tags_ignore = "_build"
 let g:airline_theme = "bubblegum"
 autocmd BufWritePre * :%s/\s\+$//e
@@ -40,14 +43,14 @@ autocmd BufWritePre * :%s/\s\+$//e
 "
 " Yank and paste
 "
-vnoremap <LEADER>y  "+y
-nnoremap <LEADER>Y  "+yg_
-nnoremap <LEADER>y  "+y
-nnoremap <LEADER>yy  "+yy
-nnoremap <LEADER>p "+p
-nnoremap <LEADER>P "+P
-vnoremap <LEADER>p "+p
-vnoremap <LEADER>P "+P
+vnoremap <leader>y  "+y
+nnoremap <leader>Y  "+yg_
+nnoremap <leader>y  "+y
+nnoremap <leader>yy  "+yy
+nnoremap <leader>p "+p
+nnoremap <leader>P "+P
+vnoremap <leader>p "+p
+vnoremap <leader>P "+P
 
 inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
@@ -65,13 +68,27 @@ nmap <F10> :qa<CR>
 "
 " Console
 "
-nmap <F11> :cprev<CR>
-nmap <S-F11> :cpfile<CR>
-nmap <C-F11> :colder<CR>
-nmap <F12> :cnext<CR>
-nmap <S-F12> :cnfile<CR>
-nmap <C-F12> :cnewer<CR>
-nmap <LEADER>x :ccl<CR>
+nnoremap <leader>q :call QuickfixToggle()<cr>
+
+let g:quickfix_is_open = 0
+
+function! QuickfixToggle()
+    if g:quickfix_is_open
+        cclose
+        let g:quickfix_is_open = 0
+    else
+        copen
+        let g:quickfix_is_open = 1
+    endif
+endfunction
+
+nmap <F11>     :cprev<CR>
+nmap <S-F11>   :cpfile<CR>
+nmap <C-F11>   :colder<CR>
+nmap <F12>     :cnext<CR>
+nmap <S-F12>   :cnfile<CR>
+nmap <C-F12>   :cnewer<CR>
+nmap <leader>q :cclose<CR>
 
 map <C-J> <C-W>j<C-W>_
 map <C-K> <C-W>k<C-W>_
@@ -79,36 +96,38 @@ map <C-L> <C-W>l<C-W>_
 map <C-H> <C-W>h<C-W>_
 map <S-H> gT
 map <S-L> gt
-nnoremap <LEADER>d g<C-]>
 
 "
 " Buffers
 "
-nmap <LEADER>n :bnext<CR>
-nmap <LEADER>p :bprevious<CR>
+nmap <leader>n :bnext<CR>
+nmap <leader>p :bprevious<CR>
 
 "
 " CtrlP
 "
-let g:ctrlp_buftag_types = {'go' : '--language-force=go --golang-types=ft'}
-
-nnoremap <LEADER>. :CtrlPBuffer<cr>
-nnoremap <LEADER>: :CtrlPTag<cr>
-nnoremap <LEADER># :CtrlPBufTag<cr>
+nnoremap <leader>. :CtrlPBuffer<cr>
+nnoremap <leader>: :CtrlPTag<cr>
+nnoremap <leader># :CtrlPBufTag<cr>
 
 "
 " Edit and source .vimrc
 "
-nmap <LEADER>ev :tabedit $MYVIMRC<CR>
-nmap <LEADER>sv :source $MYVIMRC<CR>
+nmap <leader>ev :tabedit $MYVIMRC<CR>
+nmap <leader>sv :source $MYVIMRC<CR>
+
+"
+" Misc
+"
+nnoremap <leader>N :setlocal number!<cr>
 
 " --------------------------------------------------
 " Actions
 " --------------------------------------------------
-"
+
 if has("autocmd")
-	" When editing a file, always jump to the last cursor position
-	autocmd BufReadPost * if line("'\"") | exe "'\"" | endif
+    " When editing a file, always jump to the last cursor position
+    autocmd BufReadPost * if line("'\"") | exe "'\"" | endif
 endif
 "
 " EOF
