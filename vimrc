@@ -46,11 +46,11 @@ autocmd BufWritePre * :%s/\s\+$//e
 vnoremap <leader>y  "+y
 nnoremap <leader>Y  "+yg_
 nnoremap <leader>y  "+y
-nnoremap <leader>yy  "+yy
-nnoremap <leader>p "+p
-nnoremap <leader>P "+P
-vnoremap <leader>p "+p
-vnoremap <leader>P "+P
+nnoremap <leader>yy "+yy
+nnoremap <leader>p  "+p
+nnoremap <leader>P  "+P
+vnoremap <leader>p  "+p
+vnoremap <leader>P  "+P
 
 inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
@@ -62,33 +62,18 @@ nmap <expr> <S-F2>  ':%s/' . @/ . '//gc<LEFT><LEFT><LEFT>'
 nnoremap n nzzzv
 nnoremap N Nzzzv
 
-nmap <F4> :TagbarToggle<CR>
-nmap <F10> :qa<CR>
-
 "
 " Console
 "
-nnoremap <leader>q :call QuickfixToggle()<cr>
-
-let g:quickfix_is_open = 0
-
-function! QuickfixToggle()
-    if g:quickfix_is_open
-        cclose
-        let g:quickfix_is_open = 0
-    else
-        copen
-        let g:quickfix_is_open = 1
-    endif
-endfunction
-
-nmap <F11>     :cprev<CR>
-nmap <S-F11>   :cpfile<CR>
-nmap <C-F11>   :colder<CR>
-nmap <F12>     :cnext<CR>
-nmap <S-F12>   :cnfile<CR>
-nmap <C-F12>   :cnewer<CR>
-nmap <leader>q :cclose<CR>
+nmap <F11>      :cprev<CR>
+nmap <S-F11>    :cpfile<CR>
+nmap <C-F11>    :colder<CR>
+nmap <F12>      :cnext<CR>
+nmap <S-F12>    :cnfile<CR>
+nmap <C-F12>    :cnewer<CR>
+nmap <leader>q  :cclose<CR>
+nmap <leader>tt :TagbarToggle<CR>
+nmap <leader>qq :qa<CR>
 
 map <C-J> <C-W>j<C-W>_
 map <C-K> <C-W>k<C-W>_
