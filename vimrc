@@ -26,6 +26,7 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 
+set t_Co=256
 colorscheme muedark
 syntax on
 
@@ -57,8 +58,8 @@ inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 "
 " Searching
 "
-nmap <F2> :%s//gc<LEFT><LEFT><LEFT>
-nmap <expr> <S-F2>  ':%s/' . @/ . '//gc<LEFT><LEFT><LEFT>'
+nmap <leader>s :%s//gc<LEFT><LEFT><LEFT>
+nmap <expr> <leader>sr  ':%s/' . @/ . '//gc<LEFT><LEFT><LEFT>'
 nnoremap n nzzzv
 nnoremap N Nzzzv
 
