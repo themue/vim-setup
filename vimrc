@@ -10,6 +10,7 @@ set ignorecase
 set smartcase
 set hlsearch
 set number
+set relativenumber
 set cursorline
 set omnifunc=syntaxcomplete#Complete
 set foldmethod=syntax
@@ -24,19 +25,28 @@ set wildignore+=*/logs/*,*.beam
 filetype plugin indent on
 set tabstop=4
 set shiftwidth=4
-set expandtab
+set noexpandtab
 
 set t_Co=256
 colorscheme muedark
 syntax on
 
 let mapleader = "-"
-let maplocalleader = "."
+let maplocalleader = "="
 let g:airline#extensions#tabline#enabled = 1
 let g:SuperTabDefaultCompletionType = "<C-X><C-N>"
 let g:erlang_tags_ignore = "_build"
 let g:airline_theme = "bubblegum"
 autocmd BufWritePre * :%s/\s\+$//e
+
+if has("multi_byte")
+    if &termencoding == ""
+        let &termencoding = &encoding
+    endif
+    set encoding=utf-8
+    setglobal fileencoding=utf-8
+endif
+
 " --------------------------------------------------
 " Key mappings
 " --------------------------------------------------
