@@ -70,6 +70,7 @@ inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 "
 nmap <leader>s :%s//gc<LEFT><LEFT><LEFT>
 nmap <expr> <leader>sr  ':%s/' . @/ . '//gc<LEFT><LEFT><LEFT>'
+nmap <leader>g :vimgrep // **/*<LEFT><LEFT><LEFT><LEFT><LEFT><LEFT>
 nnoremap n nzzzv
 nnoremap N Nzzzv
 
