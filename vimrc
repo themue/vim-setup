@@ -97,8 +97,8 @@ map <S-L> gt
 "
 " Buffers
 "
-nmap <leader>n :bnext<CR>
-nmap <leader>p :bprevious<CR>
+nmap <leader>j :bnext<CR>
+nmap <leader>k :bprevious<CR>
 
 "
 " CtrlP
