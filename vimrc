@@ -1,7 +1,27 @@
 " ==================================================
 " .vimrc / init.vim
 " ==================================================
-execute pathogen#infect()
+" execute pathogen#infect()
+call plug#begin('~/.vim/plugged')
+Plug 'kien/ctrlp.vim'
+Plug 'ervandew/supertab'
+Plug 'scrooloose/syntastic'
+Plug 'majutsushi/tagbar'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'tpope/vim-dispatch'
+Plug 'themue/vim-gode'
+Plug 'tpope/vim-fugitive'
+Plug 'fishcakez/vim-rebar'
+Plug 'tpope/vim-scriptease'
+Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-vinegar'
+Plug 'vimoutliner/vimoutliner'
+call plug#end()
+" --------------------------------------------------
+" SETTINGS
+" --------------------------------------------------
 filetype off
 filetype plugin indent off
 set autoread
@@ -46,11 +66,9 @@ if has("multi_byte")
     set encoding=utf-8
     setglobal fileencoding=utf-8
 endif
-
 " --------------------------------------------------
-" Key mappings
+" KEY MAPPINGS
 " --------------------------------------------------
-
 "
 " Yank and paste
 "
@@ -64,7 +82,6 @@ vnoremap <leader>p  "+p
 vnoremap <leader>P  "+P
 
 inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-
 "
 " Searching
 "
@@ -73,7 +90,6 @@ nmap <expr> <leader>sr  ':%s/' . @/ . '//gc<LEFT><LEFT><LEFT>'
 nmap <leader>g :vimgrep // **/*<LEFT><LEFT><LEFT><LEFT><LEFT><LEFT>
 nnoremap n nzzzv
 nnoremap N Nzzzv
-
 "
 " Console
 "
@@ -93,39 +109,33 @@ map <C-L> <C-W>l<C-W>_
 map <C-H> <C-W>h<C-W>_
 map <S-H> gT
 map <S-L> gt
-
 "
 " Buffers
 "
 nmap <leader>j :bnext<CR>
 nmap <leader>k :bprevious<CR>
-
 "
 " CtrlP
 "
 nnoremap <leader>. :CtrlPBuffer<cr>
 nnoremap <leader>: :CtrlPTag<cr>
 nnoremap <leader># :CtrlPBufTag<cr>
-
 "
 " Edit and source .vimrc
 "
 nmap <leader>ev :tabedit $MYVIMRC<CR>
 nmap <leader>sv :source $MYVIMRC<CR>
-
 "
 " Misc
 "
 nnoremap <leader>N :setlocal number!<cr>
-
 " --------------------------------------------------
-" Actions
+" ACTIONS
 " --------------------------------------------------
-
 if has("autocmd")
     " When editing a file, always jump to the last cursor position
     autocmd BufReadPost * if line("'\"") | exe "'\"" | endif
 endif
-"
+" ==================================================
 " EOF
-"
+" ==================================================
