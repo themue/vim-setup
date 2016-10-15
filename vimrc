@@ -1,7 +1,6 @@
 " ==================================================
 " .vimrc / init.vim
 " ==================================================
-" execute pathogen#infect()
 call plug#begin('~/.vim/plugged')
 Plug 'kien/ctrlp.vim'
 Plug 'ervandew/supertab'
@@ -17,6 +16,8 @@ Plug 'tpope/vim-scriptease'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-vinegar'
+Plug 'pangloss/vim-javascript'
+Plug 'othree/html5.vim'
 Plug 'vimoutliner/vimoutliner'
 call plug#end()
 " --------------------------------------------------
