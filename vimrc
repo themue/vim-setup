@@ -7,7 +7,7 @@ Plug 'ervandew/supertab'
 Plug 'jiangmiao/auto-pairs'
 Plug 'scrooloose/syntastic'
 Plug 'majutsushi/tagbar'
-Plug 'eugen0329/vim-esearch'
+Plug 'dkprice/vim-easygrep'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-dispatch'
@@ -43,7 +43,6 @@ set guifont=Hack:h13
 set shell=bash
 set mouse=a
 set ttymouse=xterm2
-set wildignore+=*/logs/*,*.beam
 filetype plugin indent on
 set tabstop=4
 set shiftwidth=4
@@ -55,9 +54,8 @@ syntax on
 
 let mapleader = "-"
 let maplocalleader = "="
-let g:airline#extensions#tabline#enabled = 1
 let g:SuperTabDefaultCompletionType = "<C-X><C-N>"
-let g:erlang_tags_ignore = "_build"
+let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme = "bubblegum"
 autocmd BufWritePre * :%s/\s\+$//e
 
