@@ -81,7 +81,7 @@ nnoremap <leader>P  "+P
 vnoremap <leader>p  "+p
 vnoremap <leader>P  "+P
 
-inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<cr>"
 "
 " Searching
 "
@@ -93,15 +93,15 @@ nnoremap N Nzzzv
 "
 " Console
 "
-nmap <F11>      :cprev<CR>
-nmap <S-F11>    :cpfile<CR>
-nmap <C-F11>    :colder<CR>
-nmap <F12>      :cnext<CR>
-nmap <S-F12>    :cnfile<CR>
-nmap <C-F12>    :cnewer<CR>
-nmap <leader>q  :cclose<CR>
-nmap <leader>tt :TagbarToggle<CR>
-nmap <leader>qq :qa<CR>
+nmap <F11>      :cprev<cr>
+nmap <S-F11>    :cpfile<cr>
+nmap <C-F11>    :colder<cr>
+nmap <F12>      :cnext<cr>
+nmap <S-F12>    :cnfile<cr>
+nmap <C-F12>    :cnewer<cr>
+nmap <leader>q  :cclose<cr>
+nmap <leader>tt :TagbarToggle<cr>
+nmap <leader>qq :qa<cr>
 
 map <C-J> <C-W>j<C-W>_
 map <C-K> <C-W>k<C-W>_
@@ -112,8 +112,8 @@ map <S-L> gt
 "
 " Buffers
 "
-nmap <leader>j :bnext<CR>
-nmap <leader>k :bprevious<CR>
+nmap <leader>j :bnext<cr>
+nmap <leader>k :bprevious<cr>
 "
 " CtrlP
 "
@@ -123,12 +123,13 @@ nnoremap <leader># :CtrlPBufTag<cr>
 "
 " Edit and source .vimrc
 "
-nmap <leader>ev :tabedit $MYVIMRC<CR>
-nmap <leader>sv :source $MYVIMRC<CR>
+nmap <leader>ev :tabedit $MYVIMRC<cr>
+nmap <leader>sv :source $MYVIMRC<cr>
 "
 " Misc
 "
 nnoremap <leader>N :setlocal number!<cr>
+inoremap jj <esc>
 " --------------------------------------------------
 " ACTIONS
 " --------------------------------------------------
