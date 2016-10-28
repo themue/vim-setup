@@ -32,7 +32,6 @@ set ignorecase
 set smartcase
 set hlsearch
 set number
-set relativenumber
 set cursorline
 set omnifunc=syntaxcomplete#Complete
 set foldmethod=syntax
