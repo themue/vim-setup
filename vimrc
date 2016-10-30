@@ -102,6 +102,13 @@ nmap <leader>q  :cclose<cr>
 nmap <leader>tt :TagbarToggle<cr>
 nmap <leader>qq :qa<cr>
 
+imap ü <C-]>
+imap ö [
+imap ä ]
+imap Ö {
+imap Ä }
+imap ß /
+
 map <C-J> <C-W>j<C-W>_
 map <C-K> <C-W>k<C-W>_
 map <C-L> <C-W>l<C-W>_
