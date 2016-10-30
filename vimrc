@@ -136,7 +136,7 @@ nmap <leader>sv :source $MYVIMRC<cr>
 "
 nnoremap <leader>N :setlocal number!<cr>
 inoremap jj <esc>
-inoremap JJ <esc>:w<cr>
+inoremap jk <esc>:w<cr>
 " --------------------------------------------------
 " ACTIONS
 " --------------------------------------------------
