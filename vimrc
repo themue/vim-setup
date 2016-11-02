@@ -134,7 +134,10 @@ nmap <leader>sv :source $MYVIMRC<cr>
 "
 " Misc
 "
+nnoremap <leader><space> :nohlsearch<cr>
 nnoremap <leader>N :setlocal number!<cr>
+vnoremap < <gv
+vnoremap > >gv
 inoremap jj <esc>
 inoremap yy <esc>:w<cr>
 nnoremap yy :w<cr>
