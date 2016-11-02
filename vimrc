@@ -52,7 +52,7 @@ colorscheme muedark
 syntax on
 
 let mapleader = "-"
-let maplocalleader = "="
+let maplocalleader = "_"
 let g:SuperTabDefaultCompletionType = "<C-X><C-N>"
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme = "bubblegum"
