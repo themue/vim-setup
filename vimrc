@@ -98,7 +98,7 @@ nmap <C-F11>    :colder<cr>
 nmap <F12>      :cnext<cr>
 nmap <S-F12>    :cnfile<cr>
 nmap <C-F12>    :cnewer<cr>
-nmap <leader>q  :cclose<cr>
+nmap <leader>cc :cclose<cr>
 nmap <leader>tt :TagbarToggle<cr>
 nmap <leader>qq :qa<cr>
 
