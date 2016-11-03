@@ -66,6 +66,29 @@ if has("multi_byte")
     setglobal fileencoding=utf-8
 endif
 " --------------------------------------------------
+" FUNCTIONS AND COMMANDS
+" --------------------------------------------------
+function! g:KbdGerman()
+    iunmap ü
+    iunmap ö
+    iunmap ä
+    iunmap Ö
+    iunmap Ä
+    iunmap ß
+endfunction
+
+function! g:KbdProgramming()
+    inoremap ü <C-]>
+    inoremap ö [
+    inoremap ä ]
+    inoremap Ö {
+    inoremap Ä }
+    inoremap ß /
+endfunction
+
+command! KbdGerman      :call KbdGerman()
+command! KbdProgramming :call KbdProgramming()
+" --------------------------------------------------
 " KEY MAPPINGS
 " --------------------------------------------------
 "
@@ -101,13 +124,6 @@ nmap <C-F12>    :cnewer<cr>
 nmap <leader>cc :cclose<cr>
 nmap <leader>tt :TagbarToggle<cr>
 nmap <leader>qq :qa<cr>
-
-imap ü <C-]>
-imap ö [
-imap ä ]
-imap Ö {
-imap Ä }
-imap ß /
 
 map <C-J> <C-W>j<C-W>_
 map <C-K> <C-W>k<C-W>_
@@ -148,6 +164,8 @@ if has("autocmd")
     " When editing a file, always jump to the last cursor position
     autocmd BufReadPost * if line("'\"") | exe "'\"" | endif
 endif
+
+call KbdProgramming()
 " ==================================================
 " EOF
 " ==================================================
