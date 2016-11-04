@@ -56,7 +56,6 @@ let maplocalleader = "_"
 let g:SuperTabDefaultCompletionType = "<C-X><C-N>"
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme = "bubblegum"
-autocmd BufWritePre * :%s/\s\+$//e
 
 if has("multi_byte")
     if &termencoding == ""
@@ -78,12 +77,12 @@ function! g:KbdGerman()
 endfunction
 
 function! g:KbdProgramming()
-    inoremap ü <C-]>
-    inoremap ö [
-    inoremap ä ]
-    inoremap Ö {
-    inoremap Ä }
-    inoremap ß /
+    imap ü <C-]>
+    imap ö [
+    imap ä ]
+    imap Ö {
+    imap Ä }
+    imap ß /
 endfunction
 
 command! KbdGerman      :call KbdGerman()
@@ -161,7 +160,7 @@ nnoremap yy :w<cr>
 " ACTIONS
 " --------------------------------------------------
 if has("autocmd")
-    " When editing a file, always jump to the last cursor position
+    autocmd BufWritePre * :%s/\s\+$//e
     autocmd BufReadPost * if line("'\"") | exe "'\"" | endif
 endif
 
