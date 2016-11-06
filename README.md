@@ -1,6 +1,6 @@
 # vim-setup
 
-Small project for the initial setup and maintenance of a vim environment.
+Small project for the initial setup and maintenance of my vim environment.
 
-* `setup-vim.sh` installs the `.vimrc` and the needed bundles
-* `update-vim-bundles.sh` iterates over the bundles and updates them from their repositories
+* `setup-vim.sh` installs `.vimrc`, the color scheme, and `vim-plug`
+* `update-vim.sh` updates `.vimrc` and the colors
