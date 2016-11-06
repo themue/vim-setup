@@ -114,16 +114,6 @@ nnoremap N Nzzzv
 "
 " Console
 "
-nmap <F11>      :cprev<cr>
-nmap <S-F11>    :cpfile<cr>
-nmap <C-F11>    :colder<cr>
-nmap <F12>      :cnext<cr>
-nmap <S-F12>    :cnfile<cr>
-nmap <C-F12>    :cnewer<cr>
-nmap <leader>cc :cclose<cr>
-nmap <leader>tt :TagbarToggle<cr>
-nmap <leader>qq :qa<cr>
-
 map <C-J> <C-W>j<C-W>_
 map <C-K> <C-W>k<C-W>_
 map <C-L> <C-W>l<C-W>_
@@ -149,13 +139,23 @@ nmap <leader>sv :source $MYVIMRC<cr>
 "
 " Misc
 "
+nmap     <leader>cc      :cclose<cr>
+nmap     <leader>tt      :TagbarToggle<cr>
+nmap     <leader>qq      :qa<cr>
 nnoremap <leader><space> :nohlsearch<cr>
-nnoremap <leader>N :setlocal number!<cr>
-vnoremap < <gv
-vnoremap > >gv
-inoremap jj <esc>
-inoremap yy <esc>:w<cr>
-nnoremap yy :w<cr>
+nnoremap <leader>N       :setlocal number!<cr>
+
+vnoremap <       <gv
+vnoremap >       >gv
+nmap     <F11>   :cprev<cr>
+nmap     <S-F11> :cpfile<cr>
+nmap     <C-F11> :colder<cr>
+nmap     <F12>   :cnext<cr>
+nmap     <S-F12> :cnfile<cr>
+nmap     <C-F12> :cnewer<cr>
+inoremap jj      <esc>
+inoremap yy      <esc>:w<cr>
+nnoremap yy      :w<cr>
 " --------------------------------------------------
 " ACTIONS
 " --------------------------------------------------
