@@ -139,6 +139,9 @@ nmap <leader>sv :source $MYVIMRC<cr>
 "
 " Misc
 "
+inoremap jj              <esc>
+inoremap <leader>ww      <esc>:w<cr>
+nnoremap <leader>ww      :w<cr>
 nmap     <leader>cc      :cclose<cr>
 nmap     <leader>tt      :TagbarToggle<cr>
 nmap     <leader>qq      :qa<cr>
@@ -153,9 +156,6 @@ nmap     <C-F11> :colder<cr>
 nmap     <F12>   :cnext<cr>
 nmap     <S-F12> :cnfile<cr>
 nmap     <C-F12> :cnewer<cr>
-inoremap jj      <esc>
-inoremap yy      <esc>:w<cr>
-nnoremap yy      :w<cr>
 " --------------------------------------------------
 " ACTIONS
 " --------------------------------------------------
