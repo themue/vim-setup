@@ -84,8 +84,8 @@ if &t_Co >= 256
 
   hi Cursor           ctermbg=231  ctermfg=NONE cterm=NONE
   hi CursorColumn     ctermbg=232  ctermfg=NONE cterm=NONE
-  hi CursorLine       ctermbg=232  ctermfg=NONE cterm=NONE
-  hi CursorLineNr     ctermbg=232  ctermfg=214  cterm=NONE
+  hi CursorLine       ctermbg=235  ctermfg=NONE cterm=NONE
+  hi CursorLineNr     ctermbg=235  ctermfg=214  cterm=NONE
 
   hi helpleadblank    ctermbg=NONE ctermfg=NONE cterm=NONE
   hi helpnormal       ctermbg=NONE ctermfg=NONE cterm=NONE
