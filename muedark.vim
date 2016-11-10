@@ -82,10 +82,10 @@ if &t_Co >= 256
 
   hi NonText          ctermbg=NONE ctermfg=240  cterm=NONE
 
-  hi Cursor           ctermbg=231  ctermfg=0 cterm=NONE
-  hi CursorColumn     ctermbg=232  ctermfg=NONE cterm=NONE
-  hi CursorLine       ctermbg=236  ctermfg=NONE cterm=NONE
-  hi CursorLineNr     ctermbg=236  ctermfg=214  cterm=NONE
+  hi Cursor           ctermbg=172  ctermfg=0    cterm=NONE
+  hi CursorColumn     ctermbg=172  ctermfg=0    cterm=NONE
+  hi CursorLine       ctermbg=236  ctermfg=254 cterm=NONE
+  hi CursorLineNr     ctermbg=236  ctermfg=172 cterm=NONE
 
   hi HelpNormal       ctermbg=NONE ctermfg=NONE cterm=NONE
   hi HelpLeadBlank    ctermbg=NONE ctermfg=NONE cterm=NONE
