@@ -15,19 +15,18 @@ let g:colors_name = 'muedark'
 " Check for 256 colors.
 "
 if &t_Co >= 256
-  hi Normal           ctermbg=236  ctermfg=179  cterm=NONE
-  hi Special          ctermbg=NONE ctermfg=65   cterm=NONE
+  hi Normal           ctermbg=236  ctermfg=249  cterm=NONE
+  hi Special          ctermbg=NONE ctermfg=77   cterm=NONE
   hi Comment          ctermbg=NONE ctermfg=160  cterm=NONE
   hi Statement        ctermbg=NONE ctermfg=173  cterm=NONE
-  hi Identifier       ctermbg=NONE ctermfg=65   cterm=NONE
-  hi Type             ctermbg=NONE ctermfg=94   cterm=NONE
-  hi Function         ctermbg=NONE ctermfg=941  cterm=NONE
+  hi Identifier       ctermbg=NONE ctermfg=40   cterm=NONE
+  hi Type             ctermbg=NONE ctermfg=214  cterm=NONE
+  hi Function         ctermbg=NONE ctermfg=202  cterm=NONE
   hi PreProc          ctermbg=NONE ctermfg=95   cterm=NONE
 
   hi Constant         ctermbg=NONE ctermfg=166  cterm=NONE
   hi Boolean          ctermbg=NONE ctermfg=124  cterm=NONE
-  hi String           ctermbg=NONE ctermfg=100  cterm=NONE
-  hi Title            ctermbg=NONE ctermfg=109  cterm=NONE
+  hi String           ctermbg=NONE ctermfg=106  cterm=NONE
 
   hi LineNr           ctermbg=NONE ctermfg=241  cterm=NONE
   hi MatchParen       ctermbg=NONE ctermfg=34   cterm=NONE
@@ -46,8 +45,9 @@ if &t_Co >= 256
   hi IncSearch        ctermbg=106  ctermfg=235  cterm=NONE
   hi Search           ctermbg=106  ctermfg=235  cterm=NONE
 
-  hi StatusLine       ctermbg=236  ctermfg=255  cterm=BOLD
-  hi StatusLineNC     ctermbg=236  ctermfg=233  cterm=NONE
+  hi Title            ctermbg=NONE ctermfg=109  cterm=NONE
+  hi StatusLine       ctermbg=16   ctermfg=255  cterm=BOLD
+  hi StatusLineNC     ctermbg=16   ctermfg=233  cterm=NONE
   hi VertSplit        ctermbg=252  ctermfg=NONE cterm=NONE
   hi ModeMsg          ctermbg=NONE ctermfg=111  cterm=NONE
   hi WildMenu         ctermbg=236  ctermfg=111  cterm=UNDERLINE
