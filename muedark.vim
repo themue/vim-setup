@@ -15,7 +15,7 @@ let g:colors_name = 'muedark'
 " Check for 256 colors.
 "
 if &t_Co >= 256
-  hi Normal           ctermbg=236  ctermfg=249  cterm=NONE
+  hi Normal           ctermbg=233  ctermfg=249  cterm=NONE
   hi Special          ctermbg=NONE ctermfg=77   cterm=NONE
   hi Comment          ctermbg=NONE ctermfg=160  cterm=NONE
   hi Statement        ctermbg=NONE ctermfg=173  cterm=NONE
@@ -40,7 +40,7 @@ if &t_Co >= 256
   hi Directory        ctermbg=NONE ctermfg=143  cterm=NONE
   hi Underlined       ctermbg=NONE ctermfg=NONE cterm=UNDERLINE
 
-  hi Visual           ctermbg=233  ctermfg=110  cterm=REVERSE
+  hi Visual           ctermbg=16   ctermfg=250  cterm=REVERSE
   hi VisualNOS        ctermbg=NONE ctermfg=NONE cterm=UNDERLINE
   hi IncSearch        ctermbg=106  ctermfg=235  cterm=NONE
   hi Search           ctermbg=106  ctermfg=235  cterm=NONE
