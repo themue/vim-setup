@@ -38,7 +38,6 @@ set foldmethod=syntax
 set foldnestmax=10
 set nofoldenable
 set foldlevel=0
-set guifont=Hack:h13
 set shell=bash
 set mouse=a
 set ttymouse=xterm2
@@ -55,7 +54,7 @@ let mapleader = "-"
 let maplocalleader = ","
 let g:SuperTabDefaultCompletionType = "<C-X><C-N>"
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme = "bubblegum"
+let g:airline_theme = "sol"
 
 if has("multi_byte")
     if &termencoding == ""
