@@ -16,7 +16,6 @@ let g:colors_name = 'muedark'
 "
 if &t_Co >= 256
   hi Normal           ctermbg=233  ctermfg=249  cterm=NONE
-  hi Special          ctermbg=NONE ctermfg=77   cterm=NONE
   hi Comment          ctermbg=NONE ctermfg=160  cterm=NONE
   hi Statement        ctermbg=NONE ctermfg=173  cterm=NONE
   hi Identifier       ctermbg=NONE ctermfg=40   cterm=NONE
@@ -31,13 +30,14 @@ if &t_Co >= 256
   hi LineNr           ctermbg=NONE ctermfg=241  cterm=NONE
   hi MatchParen       ctermbg=NONE ctermfg=34   cterm=NONE
   hi Conceal          ctermbg=NONE ctermfg=245  cterm=NONE
-  hi SpecialKey       ctermbg=NONE ctermfg=240  cterm=NONE
   hi ColorColumn      ctermbg=236  ctermfg=NONE cterm=NONE
   hi SignColumn       ctermbg=233  ctermfg=242  cterm=NONE
   hi Folded           ctermbg=NONE ctermfg=88   cterm=NONE
   hi FoldColumn       ctermbg=NONE ctermfg=88   cterm=NONE
 
   hi Directory        ctermbg=NONE ctermfg=143  cterm=NONE
+  hi Special          ctermbg=NONE ctermfg=77   cterm=NONE
+  hi SpecialKey       ctermbg=NONE ctermfg=240  cterm=NONE
   hi Underlined       ctermbg=NONE ctermfg=NONE cterm=UNDERLINE
 
   hi Visual           ctermbg=16   ctermfg=250  cterm=REVERSE
@@ -78,7 +78,7 @@ if &t_Co >= 256
 
   hi Error            ctermbg=NONE ctermfg=124  cterm=REVERSE
   hi Ignore           ctermbg=NONE ctermfg=NONE cterm=NONE
-  hi Todo             ctermbg=230  ctermfg=232  cterm=NONE
+  hi Todo             ctermbg=NONE ctermfg=214  cterm=NONE
 
   hi NonText          ctermbg=NONE ctermfg=240  cterm=NONE
 

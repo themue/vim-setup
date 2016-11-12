@@ -19,6 +19,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-vinegar'
 Plug 'pangloss/vim-javascript'
 Plug 'othree/html5.vim'
+Plug 'guns/xterm-color-table.vim'
 Plug 'vimoutliner/vimoutliner'
 call plug#end()
 " --------------------------------------------------
