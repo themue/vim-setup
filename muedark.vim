@@ -15,7 +15,7 @@ let g:colors_name = 'muedark'
 " Check for 256 colors.
 "
 if &t_Co >= 256
-  hi Normal           ctermbg=233  ctermfg=249  cterm=NONE
+  hi Normal           ctermbg=234  ctermfg=249  cterm=NONE
   hi Comment          ctermbg=NONE ctermfg=160  cterm=NONE
   hi Statement        ctermbg=NONE ctermfg=173  cterm=NONE
   hi Identifier       ctermbg=NONE ctermfg=40   cterm=NONE
