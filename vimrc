@@ -29,7 +29,7 @@ filetype off
 filetype plugin indent off
 set autoread
 set incsearch
-set ignorecase
+set noignorecase
 set smartcase
 set hlsearch
 set number
