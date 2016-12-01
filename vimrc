@@ -87,6 +87,7 @@ endfunction
 
 command! KbdGerman      :call KbdGerman()
 command! KbdProgramming :call KbdProgramming()
+command! Todo noautocmd vimgrep /TODO\|FIXME/j ** | cw
 " --------------------------------------------------
 " KEY MAPPINGS
 " --------------------------------------------------
