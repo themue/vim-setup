@@ -124,14 +124,18 @@ map <S-L> gt
 "
 " Buffers
 "
-nmap <leader>j :bnext<cr>
-nmap <leader>k :bprevious<cr>
+nmap <leader>hh :bprevious<cr>
+nmap <leader>ll :bnext<cr>
+nmap <leader>xx :bdelete<cr>
 "
 " CtrlP
 "
 nnoremap <leader>. :CtrlPBuffer<cr>
 nnoremap <leader>: :CtrlPTag<cr>
 nnoremap <leader># :CtrlPBufTag<cr>
+nnoremap <leader>' :CtrlPBufTagAll<cr>
+nnoremap <leader>, :CtrlPChange<cr>
+nnoremap <leader>; :CtrlPChangeAll<cr>
 "
 " Edit and source .vimrc
 "
