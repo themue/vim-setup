@@ -2,7 +2,7 @@
 " .vimrc / init.vim
 " ==================================================
 call plug#begin('~/.vim/plugged')
-Plug 'kien/ctrlp.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 Plug 'ervandew/supertab'
 Plug 'jiangmiao/auto-pairs'
 Plug 'scrooloose/syntastic'
