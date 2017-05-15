@@ -30,12 +30,24 @@ call plug#end()
 filetype off
 filetype plugin indent off
 set autoread
+set autoindent
 set incsearch
 set noignorecase
 set smartcase
 set hlsearch
 set number
 set cursorline
+set showcmd
+set splitright
+set splitbelow
+set noswapfile
+set autowrite
+set showcmd
+set splitright
+set splitbelow
+set noswapfile
+set autowrite
+set backspace=indent,eol,start
 set omnifunc=syntaxcomplete#Complete
 set foldmethod=syntax
 set foldnestmax=10
@@ -44,6 +56,10 @@ set foldlevel=0
 set shell=bash
 set mouse=a
 set ttymouse=xterm2
+set ttyfast
+set ttyscroll=3
+set laststatus=2
+set encoding=utf-8
 filetype plugin indent on
 set tabstop=4
 set shiftwidth=4
@@ -107,6 +123,11 @@ vnoremap <leader>P  "+P
 
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<cr>"
 "
+" Move visual block
+"
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
+"
 " Searching
 "
 nmap <leader>s :%s//gc<LEFT><LEFT><LEFT>
@@ -167,8 +188,17 @@ nmap     <C-F12> :cnewer<cr>
 " ACTIONS
 " --------------------------------------------------
 if has("autocmd")
-    autocmd BufWritePre * :%s/\s\+$//e
-    autocmd BufReadPost * if line("'\"") | exe "'\"" | endif
+	autocmd BufWritePre * :%s/\s\+$//e
+	autocmd BufReadPost * if line("'\"") | exe "'\"" | endif
+endif
+" Keep undo history across sessions by storing it in a file.
+if has('persistent_undo')
+	let vimdir = '$HOME/.vim'
+	let vimundodir = expand(vimdir . '/undodir')
+	call system('mkdir ' . vimdir)
+	call system('mkdir ' . vimundodir)
+	let &undodir = vimundodir
+	set undofile
 endif
 
 call KbdProgramming()
