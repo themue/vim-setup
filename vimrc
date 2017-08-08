@@ -194,8 +194,23 @@ nmap     <C-F12> :cnewer<cr>
 " ACTIONS
 " --------------------------------------------------
 if has("autocmd")
+	" Write and read buffer.
 	autocmd BufWritePre * :%s/\s\+$//e
 	autocmd BufReadPost * if line("'\"") | exe "'\"" | endif
+	" Go together with vim-go.
+	autocmd FileType go nmap <localleader>b   <Plug>(go-build)
+	autocmd FileType go nmap <localleader>B   <Plug>(go-test-compile)
+	autocmd FileType go nmap <localleader>c   <Plug>(go-coverage)
+	autocmd FileType go nmap <localleader>d   <Plug>(go-deps)
+	autocmd FileType go nmap <localleader>D   <Plug>(go-def)
+	autocmd FileType go nmap <localleader>F   <Plug>(go-imports)
+	autocmd FileType go nmap <localleader>i   <Plug>(go-install)
+	autocmd FileType go nmap <localleader>l   <Plug>(go-lint)
+	autocmd FileType go nmap <localleader>r   <Plug>(go-run)
+	autocmd FileType go nmap <localleader>t   <Plug>(go-test-func)
+	autocmd FileType go nmap <localleader>T   <Plug>(go-test)
+	autocmd FileType go nmap <localleader>v   <Plug>(go-vet)
+	autocmd FileType go nmap <localleader>V   <Plug>(go-doc-vertical)
 endif
 " Keep undo history across sessions by storing it in a file.
 if has('persistent_undo')
