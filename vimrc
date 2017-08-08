@@ -18,12 +18,13 @@ Plug 'tpope/vim-scriptease'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-vinegar'
+Plug 'fatih/vim-go'
+Plug 'nsf/gocode'
 Plug 'pangloss/vim-javascript'
-Plug 'python-mode/python-mode'
 Plug 'othree/html5.vim'
-Plug 'themue/vim-gode'
 Plug 'guns/xterm-color-table.vim'
 Plug 'vimoutliner/vimoutliner'
+" Plug 'themue/vim-gode'
 call plug#end()
 " --------------------------------------------------
 " SETTINGS
@@ -50,6 +51,7 @@ set noswapfile
 set autowrite
 set backspace=indent,eol,start
 set omnifunc=syntaxcomplete#Complete
+set completeopt-=preview
 set foldmethod=syntax
 set foldnestmax=10
 set nofoldenable
@@ -72,7 +74,8 @@ syntax on
 
 let mapleader = "-"
 let maplocalleader = ","
-let g:SuperTabDefaultCompletionType = "<C-X><C-N>"
+
+let g:SuperTabDefaultCompletionType = "<C-x><C-o>"
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme = "sol"
 
@@ -171,6 +174,8 @@ nmap <leader>sv :source $MYVIMRC<cr>
 inoremap jj              <esc>
 inoremap <leader>ww      <esc>:w<cr>
 nnoremap <leader>ww      :w<cr>
+nmap     <leader>nn      :cnext<cr>
+nmap     <leader>pp      :cprev<cr>
 nmap     <leader>cc      :cclose<cr>
 nmap     <leader>tt      :TagbarToggle<cr>
 nmap     <leader>qq      :qa<cr>
