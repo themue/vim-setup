@@ -78,6 +78,10 @@ let maplocalleader = ","
 let g:SuperTabDefaultCompletionType = "<C-x><C-o>"
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme = "sol"
+let g:go_fmt_command = "goimports"
+let g:go_auto_type_info = 1
+let g:go_info_mode = 'gocode'
+let g:go_updatetime = 500
 
 if has("multi_byte")
     if &termencoding == ""
@@ -198,19 +202,20 @@ if has("autocmd")
 	autocmd BufWritePre * :%s/\s\+$//e
 	autocmd BufReadPost * if line("'\"") | exe "'\"" | endif
 	" Go together with vim-go.
-	autocmd FileType go nmap <localleader>b   <Plug>(go-build)
-	autocmd FileType go nmap <localleader>B   <Plug>(go-test-compile)
-	autocmd FileType go nmap <localleader>c   <Plug>(go-coverage)
-	autocmd FileType go nmap <localleader>d   <Plug>(go-deps)
-	autocmd FileType go nmap <localleader>D   <Plug>(go-def)
-	autocmd FileType go nmap <localleader>F   <Plug>(go-imports)
-	autocmd FileType go nmap <localleader>i   <Plug>(go-install)
-	autocmd FileType go nmap <localleader>l   <Plug>(go-lint)
-	autocmd FileType go nmap <localleader>r   <Plug>(go-run)
-	autocmd FileType go nmap <localleader>t   <Plug>(go-test-func)
-	autocmd FileType go nmap <localleader>T   <Plug>(go-test)
-	autocmd FileType go nmap <localleader>v   <Plug>(go-vet)
-	autocmd FileType go nmap <localleader>V   <Plug>(go-doc-vertical)
+	autocmd FileType go nmap <localleader>b <Plug>(go-build)
+	autocmd FileType go nmap <localleader>B <Plug>(go-test-compile)
+	autocmd FileType go nmap <localleader>c <Plug>(go-coverage)
+	autocmd FileType go nmap <localleader>d <Plug>(go-deps)
+	autocmd FileType go nmap <localleader>D <Plug>(go-def)
+	autocmd FileType go nmap <localleader>f <Plug>(go-imports)
+	autocmd FileType go nmap <localleader>F <Plug>(go-fmt)
+	autocmd FileType go nmap <localleader>i <Plug>(go-install)
+	autocmd FileType go nmap <localleader>l <Plug>(go-lint)
+	autocmd FileType go nmap <localleader>r <Plug>(go-run)
+	autocmd FileType go nmap <localleader>t <Plug>(go-test-func)
+	autocmd FileType go nmap <localleader>T <Plug>(go-test)
+	autocmd FileType go nmap <localleader>v <Plug>(go-vet)
+	autocmd FileType go nmap <localleader>V <Plug>(go-doc-vertical)
 endif
 " Keep undo history across sessions by storing it in a file.
 if has('persistent_undo')
