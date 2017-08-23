@@ -139,6 +139,7 @@ vnoremap K :m '<-2<CR>gv=gv
 " Searching
 "
 nmap <leader>s :%s//gc<LEFT><LEFT><LEFT>
+nmap <Leader>sw :%s/\<<C-r><C-w>\>//g<Left><Left>
 nmap <expr> <leader>sr  ':%s/' . @/ . '//gc<LEFT><LEFT><LEFT>'
 nmap <leader>g :vimgrep // **/*<LEFT><LEFT><LEFT><LEFT><LEFT><LEFT>
 nnoremap n nzzzv
