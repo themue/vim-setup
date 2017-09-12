@@ -11,45 +11,46 @@ endif
 
 set background=dark
 let g:colors_name = 'muedark'
+hi Normal guibg=black guifg=white
 "
 " Check for 256 colors.
 "
 if &t_Co >= 256
   hi Normal           ctermbg=232  ctermfg=249  cterm=NONE
-  hi Comment          ctermbg=NONE ctermfg=160  cterm=NONE
-  hi Statement        ctermbg=NONE ctermfg=173  cterm=NONE
-  hi Identifier       ctermbg=NONE ctermfg=40   cterm=NONE
-  hi Type             ctermbg=NONE ctermfg=214  cterm=NONE
-  hi Function         ctermbg=NONE ctermfg=202  cterm=NONE
-  hi PreProc          ctermbg=NONE ctermfg=95   cterm=NONE
+  hi Comment          ctermbg=0    ctermfg=160  cterm=NONE
+  hi Statement        ctermbg=0    ctermfg=173  cterm=NONE
+  hi Identifier       ctermbg=0    ctermfg=40   cterm=NONE
+  hi Type             ctermbg=0    ctermfg=214  cterm=NONE
+  hi Function         ctermbg=0    ctermfg=202  cterm=NONE
+  hi PreProc          ctermbg=0    ctermfg=95   cterm=NONE
 
-  hi Constant         ctermbg=NONE ctermfg=166  cterm=NONE
-  hi Boolean          ctermbg=NONE ctermfg=124  cterm=NONE
-  hi String           ctermbg=NONE ctermfg=106  cterm=NONE
+  hi Constant         ctermbg=0    ctermfg=166  cterm=NONE
+  hi Boolean          ctermbg=0    ctermfg=124  cterm=NONE
+  hi String           ctermbg=0    ctermfg=106  cterm=NONE
 
-  hi LineNr           ctermbg=NONE ctermfg=241  cterm=NONE
-  hi MatchParen       ctermbg=NONE ctermfg=34   cterm=NONE
-  hi Conceal          ctermbg=NONE ctermfg=245  cterm=NONE
+  hi LineNr           ctermbg=0    ctermfg=241  cterm=NONE
+  hi MatchParen       ctermbg=0    ctermfg=34   cterm=NONE
+  hi Conceal          ctermbg=0    ctermfg=245  cterm=NONE
   hi ColorColumn      ctermbg=236  ctermfg=NONE cterm=NONE
   hi SignColumn       ctermbg=233  ctermfg=242  cterm=NONE
-  hi Folded           ctermbg=NONE ctermfg=88   cterm=NONE
-  hi FoldColumn       ctermbg=NONE ctermfg=88   cterm=NONE
+  hi Folded           ctermbg=0    ctermfg=88   cterm=NONE
+  hi FoldColumn       ctermbg=0    ctermfg=88   cterm=NONE
 
-  hi Directory        ctermbg=NONE ctermfg=143  cterm=NONE
-  hi Special          ctermbg=NONE ctermfg=77   cterm=NONE
-  hi SpecialKey       ctermbg=NONE ctermfg=240  cterm=NONE
-  hi Underlined       ctermbg=NONE ctermfg=NONE cterm=UNDERLINE
+  hi Directory        ctermbg=0    ctermfg=143  cterm=NONE
+  hi Special          ctermbg=0    ctermfg=77   cterm=NONE
+  hi SpecialKey       ctermbg=0    ctermfg=240  cterm=NONE
+  hi Underlined       ctermbg=0    ctermfg=NONE cterm=UNDERLINE
 
   hi Visual           ctermbg=16   ctermfg=250  cterm=REVERSE
-  hi VisualNOS        ctermbg=NONE ctermfg=NONE cterm=UNDERLINE
+  hi VisualNOS        ctermbg=0    ctermfg=NONE cterm=UNDERLINE
   hi IncSearch        ctermbg=106  ctermfg=235  cterm=NONE
   hi Search           ctermbg=106  ctermfg=235  cterm=NONE
 
-  hi Title            ctermbg=NONE ctermfg=109  cterm=NONE
+  hi Title            ctermbg=0    ctermfg=109  cterm=NONE
   hi StatusLine       ctermbg=16   ctermfg=255  cterm=BOLD
   hi StatusLineNC     ctermbg=16   ctermfg=233  cterm=NONE
   hi VertSplit        ctermbg=252  ctermfg=NONE cterm=NONE
-  hi ModeMsg          ctermbg=NONE ctermfg=111  cterm=NONE
+  hi ModeMsg          ctermbg=0    ctermfg=111  cterm=NONE
   hi WildMenu         ctermbg=236  ctermfg=111  cterm=UNDERLINE
 
   hi DiffAdd          ctermbg=64   ctermfg=235  cterm=NONE
@@ -62,33 +63,33 @@ if &t_Co >= 256
   hi PmenuSbar        ctermbg=137  ctermfg=NONE cterm=NONE
   hi PmenuThumb       ctermbg=136  ctermfg=NONE cterm=NONE
 
-  hi SpellBad         ctermbg=NONE ctermfg=NONE cterm=UNDERCURL
-  hi SpellCap         ctermbg=NONE ctermfg=NONE cterm=UNDERCURL
-  hi SpellLocal       ctermbg=NONE ctermfg=NONE cterm=UNDERCURL
-  hi SpellRare        ctermbg=NONE ctermfg=NONE cterm=UNDERCURL
+  hi SpellBad         ctermbg=0    ctermfg=NONE cterm=UNDERCURL
+  hi SpellCap         ctermbg=0    ctermfg=NONE cterm=UNDERCURL
+  hi SpellLocal       ctermbg=0    ctermfg=NONE cterm=UNDERCURL
+  hi SpellRare        ctermbg=0    ctermfg=NONE cterm=UNDERCURL
 
   hi ErrorMsg         ctermbg=124  ctermfg=235  cterm=NONE
-  hi WarningMsg       ctermbg=NONE ctermfg=124  cterm=NONE
-  hi MoreMsg          ctermbg=NONE ctermfg=111  cterm=NONE
-  hi Question         ctermbg=NONE ctermfg=111  cterm=NONE
+  hi WarningMsg       ctermbg=0    ctermfg=124  cterm=NONE
+  hi MoreMsg          ctermbg=0    ctermfg=111  cterm=NONE
+  hi Question         ctermbg=0    ctermfg=111  cterm=NONE
 
   hi TabLine          ctermbg=236  ctermfg=241  cterm=NONE
   hi TabLineSel       ctermbg=236  ctermfg=111  cterm=NONE
   hi TabLineFill      ctermbg=236  ctermfg=230  cterm=NONE
 
-  hi Error            ctermbg=NONE ctermfg=124  cterm=REVERSE
-  hi Ignore           ctermbg=NONE ctermfg=NONE cterm=NONE
-  hi Todo             ctermbg=NONE ctermfg=214  cterm=NONE
+  hi Error            ctermbg=0    ctermfg=124  cterm=REVERSE
+  hi Ignore           ctermbg=0    ctermfg=NONE cterm=NONE
+  hi Todo             ctermbg=0    ctermfg=214  cterm=NONE
 
-  hi NonText          ctermbg=NONE ctermfg=240  cterm=NONE
+  hi NonText          ctermbg=0    ctermfg=240  cterm=NONE
 
   hi Cursor           ctermbg=172  ctermfg=0    cterm=NONE
   hi CursorColumn     ctermbg=172  ctermfg=0    cterm=NONE
   hi CursorLine       ctermbg=235  ctermfg=NONE cterm=NONE
   hi CursorLineNr     ctermbg=235  ctermfg=220  cterm=NONE
 
-  hi HelpNormal       ctermbg=NONE ctermfg=NONE cterm=NONE
-  hi HelpLeadBlank    ctermbg=NONE ctermfg=NONE cterm=NONE
+  hi HelpNormal       ctermbg=0    ctermfg=NONE cterm=NONE
+  hi HelpLeadBlank    ctermbg=0    ctermfg=NONE cterm=NONE
 endif
 "
 " Link colors.
