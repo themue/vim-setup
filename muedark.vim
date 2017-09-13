@@ -94,7 +94,7 @@ endif
 " Settings for GUI
 "
 if has("gui_running")
-  hi Normal           guibg=black         guifg=grey93          gui=none
+  hi Normal           guibg=black         guifg=grey70          gui=none
   hi Comment          guibg=black         guifg=red2            gui=none
   hi Statement        guibg=black         guifg=lightsalmon3    gui=none
   hi Identifier       guibg=black         guifg=green3          gui=none
