@@ -176,7 +176,7 @@ nmap <leader>sv :source $MYVIMRC<cr>
 "
 " Misc
 "
-inoremap jj              <esc>
+inoremap ##              <esc>
 inoremap <leader>ww      <esc>:w<cr>
 nnoremap <leader>ww      :w<cr>
 nmap     <leader>nn      :cnext<cr>
