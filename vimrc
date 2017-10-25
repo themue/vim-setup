@@ -2,10 +2,12 @@
 " .vimrc / init.vim
 " ==================================================
 call plug#begin('~/.vim/plugged')
-Plug 'ctrlpvim/ctrlp.vim'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 Plug 'ervandew/supertab'
 Plug 'jiangmiao/auto-pairs'
-Plug 'scrooloose/syntastic'
+Plug 'w0rp/ale'
+Plug 'mileszs/ack.vim'
 Plug 'majutsushi/tagbar'
 Plug 'dkprice/vim-easygrep'
 Plug 'vim-airline/vim-airline'
@@ -20,6 +22,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-vinegar'
 Plug 'fatih/vim-go'
 Plug 'nsf/gocode'
+Plug 'tomlion/vim-solidity'
 Plug 'pangloss/vim-javascript'
 Plug 'othree/html5.vim'
 Plug 'guns/xterm-color-table.vim'
@@ -73,22 +76,42 @@ colorscheme muedark
 syntax on
 
 let mapleader = "-"
-let maplocalleader = ","
+let maplocalleader = "#"
 
 let g:SuperTabDefaultCompletionType = "<C-x><C-o>"
+let g:ale_completion_enabled = 1
+
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme = "sol"
+
 let g:go_fmt_command = "goimports"
 let g:go_auto_type_info = 1
-let g:go_info_mode = 'gocode'
 let g:go_updatetime = 500
+let g:go_info_mode = 'gocode'
+let g:go_list_autoclose = 1
+let g:go_list_type = "quickfix"
+let g:go_list_height = 10
 
+" --------------------------------------------------
+" CONDITIONAL SETTINGS
+" --------------------------------------------------
 if has("multi_byte")
     if &termencoding == ""
         let &termencoding = &encoding
     endif
     set encoding=utf-8
     setglobal fileencoding=utf-8
+endif
+if has("gui_running")
+  if has("gui_gtk2") || has("gui_gtk3")
+    set guifont=Go\ Mono\ 16
+  elseif has("gui_photon")
+    set guifont=Go\ Mono:h16
+  elseif has("x11")
+    set guifont=-*-courier-medium-r-normal-*-*-180-*-*-m-*-*
+  else
+    set guifont=Go_Mono:h16
+  endif
 endif
 " --------------------------------------------------
 " FUNCTIONS AND COMMANDS
@@ -114,6 +137,7 @@ endfunction
 command! KbdGerman      :call KbdGerman()
 command! KbdProgramming :call KbdProgramming()
 command! Todo noautocmd vimgrep /TODO\|FIXME/j ** | cw
+command! MkTags noautocmd !gotags -R -sort * > tags
 " --------------------------------------------------
 " KEY MAPPINGS
 " --------------------------------------------------
@@ -138,10 +162,11 @@ vnoremap K :m '<-2<CR>gv=gv
 "
 " Searching
 "
-nmap <leader>s :%s//gc<LEFT><LEFT><LEFT>
-nmap <Leader>sw :%s/\<<C-r><C-w>\>//g<Left><Left>
+nmap <leader>s          :%s//gc<LEFT><LEFT><LEFT>
+nmap <leader>sw         :%s/\<<C-r><C-w>\>//g<Left><Left>
 nmap <expr> <leader>sr  ':%s/' . @/ . '//gc<LEFT><LEFT><LEFT>'
-nmap <leader>g :vimgrep // **/*<LEFT><LEFT><LEFT><LEFT><LEFT><LEFT>
+nmap <leader>g          :vimgrep // **/*<LEFT><LEFT><LEFT><LEFT><LEFT><LEFT>
+nmap <leader>a          :Ack *<LEFT>
 nnoremap n nzzzv
 nnoremap N Nzzzv
 "
@@ -160,14 +185,14 @@ nmap <leader>hh :bprevious<cr>
 nmap <leader>ll :bnext<cr>
 nmap <leader>xx :bdelete<cr>
 "
-" CtrlP
+" FZF
 "
-nnoremap <leader>. :CtrlPBuffer<cr>
-nnoremap <leader>: :CtrlPTag<cr>
-nnoremap <leader># :CtrlPBufTag<cr>
-nnoremap <leader>' :CtrlPBufTagAll<cr>
-nnoremap <leader>, :CtrlPChange<cr>
-nnoremap <leader>; :CtrlPChangeAll<cr>
+nnoremap <C-F>o :Files<cr>
+nnoremap <C-F>f :Buffers<cr>
+nnoremap <C-F>t :Tags<cr>
+nnoremap <C-F>m :Commits<cr>
+nnoremap <C-F>l :Lines<cr>
+nnoremap <C-F>c :Commands<cr>
 "
 " Edit and source .vimrc
 "
@@ -179,22 +204,20 @@ nmap <leader>sv :source $MYVIMRC<cr>
 inoremap jj              <esc>
 inoremap <leader>ww      <esc>:w<cr>
 nnoremap <leader>ww      :w<cr>
-nmap     <leader>nn      :cnext<cr>
-nmap     <leader>pp      :cprev<cr>
+nmap     <leader>cn      :cnext<cr>
+nmap     <leader>cp      :cprev<cr>
+nmap     <leader>cw      :cnewer<cr>
+nmap     <leader>co      :colder<cr>
 nmap     <leader>cc      :cclose<cr>
+nmap     <leader>fn      :cnfile<cr>
+nmap     <leader>fp      :cpfile<cr>
 nmap     <leader>tt      :TagbarToggle<cr>
 nmap     <leader>qq      :qa<cr>
 nnoremap <leader><space> :nohlsearch<cr>
 nnoremap <leader>N       :setlocal number!<cr>
 
-vnoremap <       <gv
-vnoremap >       >gv
-nmap     <F11>   :cprev<cr>
-nmap     <S-F11> :cpfile<cr>
-nmap     <C-F11> :colder<cr>
-nmap     <F12>   :cnext<cr>
-nmap     <S-F12> :cnfile<cr>
-nmap     <C-F12> :cnewer<cr>
+vnoremap < <gv
+vnoremap > >gv
 " --------------------------------------------------
 " ACTIONS
 " --------------------------------------------------
@@ -203,20 +226,28 @@ if has("autocmd")
 	autocmd BufWritePre * :%s/\s\+$//e
 	autocmd BufReadPost * if line("'\"") | exe "'\"" | endif
 	" Go together with vim-go.
-	autocmd FileType go nmap <localleader>b <Plug>(go-build)
-	autocmd FileType go nmap <localleader>B <Plug>(go-test-compile)
-	autocmd FileType go nmap <localleader>c <Plug>(go-coverage)
-	autocmd FileType go nmap <localleader>d <Plug>(go-deps)
-	autocmd FileType go nmap <localleader>D <Plug>(go-def)
-	autocmd FileType go nmap <localleader>f <Plug>(go-imports)
-	autocmd FileType go nmap <localleader>F <Plug>(go-fmt)
-	autocmd FileType go nmap <localleader>i <Plug>(go-install)
-	autocmd FileType go nmap <localleader>l <Plug>(go-lint)
-	autocmd FileType go nmap <localleader>r <Plug>(go-run)
-	autocmd FileType go nmap <localleader>t <Plug>(go-test-func)
-	autocmd FileType go nmap <localleader>T <Plug>(go-test)
-	autocmd FileType go nmap <localleader>v <Plug>(go-vet)
-	autocmd FileType go nmap <localleader>V <Plug>(go-doc-vertical)
+	autocmd FileType go nmap <localleader>b :GoBuild<cr>
+	autocmd FileType go nmap <localleader>B :GoTestCompile<cr>
+	autocmd FileType go nmap <localleader>c :GoCoverage<cr>
+	autocmd FileType go nmap <localleader>C :GoCallstack<cr>
+	autocmd FileType go nmap <localleader>d :GoDeps<cr>
+	autocmd FileType go nmap <localleader>D :GoDef<cr>
+	autocmd FileType go nmap <localleader>E :GoCallees<cr>
+	autocmd FileType go nmap <localleader>f :GoFmt<cr>
+	autocmd FileType go nmap <localleader>F :GoImports<cr>
+	autocmd FileType go nmap <localleader>i :GoLint<cr>
+	autocmd FileType go nmap <localleader>I :GoInstall<cr>
+	autocmd FileType go nmap <localleader>l :GoDecls<cr>
+	autocmd FileType go nmap <localleader>L :GoDeclsDir<cr>
+	autocmd FileType go nmap <localleader>P :GoChannelPeers<cr>
+	autocmd FileType go nmap <localleader>r :GoReferrers<cr>
+	autocmd FileType go nmap <localleader>R :GoCallers<cr>
+	autocmd FileType go nmap <localleader>S :GoDescribe<cr>
+	autocmd FileType go nmap <localleader>t :GoTestFunc<cr>
+	autocmd FileType go nmap <localleader>T :GoTest<cr>
+	autocmd FileType go nmap <localleader>v :GoVet<cr>
+	autocmd FileType go nmap <localleader>V :GoDocVertical<cr>
+	autocmd FileType go nmap <localleader>X :GoRun<cr>
 endif
 " Keep undo history across sessions by storing it in a file.
 if has('persistent_undo')
