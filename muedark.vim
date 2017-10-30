@@ -15,7 +15,7 @@ let g:colors_name = 'muedark'
 " Settings for colored terminals.
 "
 if &t_Co >= 256
-  hi Normal           ctermbg=9    ctermfg=249  cterm=none
+  hi Normal           ctermbg=0    ctermfg=249  cterm=none
   hi Comment          ctermbg=0    ctermfg=160  cterm=none
   hi Statement        ctermbg=0    ctermfg=173  cterm=none
   hi Identifier       ctermbg=0    ctermfg=40   cterm=none
@@ -28,7 +28,7 @@ if &t_Co >= 256
   hi String           ctermbg=0    ctermfg=106  cterm=none
 
   hi LineNr           ctermbg=0    ctermfg=241  cterm=none
-  hi MatchParen       ctermbg=0    ctermfg=34   cterm=none
+  hi MatchParen                    ctermfg=34   cterm=none
   hi Conceal          ctermbg=0    ctermfg=245  cterm=none
   hi ColorColumn      ctermbg=236  ctermfg=none cterm=none
   hi SignColumn       ctermbg=233  ctermfg=242  cterm=none
@@ -107,7 +107,7 @@ if has("gui_running")
   hi String           guibg=black         guifg=yellow4         gui=none
 
   hi LineNr           guibg=black         guifg=grey39          gui=none
-  hi MatchParen       guibg=black         guifg=green3          gui=none
+  hi MatchParen                           guifg=green3          gui=none
   hi Conceal          guibg=black         guifg=grey54          gui=none
   hi ColorColumn      guibg=grey19                              gui=none
   hi SignColumn       guibg=grey7         guifg=grey42          gui=none

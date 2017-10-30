@@ -6,6 +6,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'ervandew/supertab'
 Plug 'jiangmiao/auto-pairs'
+Plug 'luochen1990/rainbow'
 Plug 'w0rp/ale'
 Plug 'mileszs/ack.vim'
 Plug 'majutsushi/tagbar'
@@ -24,10 +25,10 @@ Plug 'fatih/vim-go'
 Plug 'nsf/gocode'
 Plug 'tomlion/vim-solidity'
 Plug 'pangloss/vim-javascript'
+Plug 'guns/vim-clojure-static'
 Plug 'othree/html5.vim'
 Plug 'guns/xterm-color-table.vim'
 Plug 'vimoutliner/vimoutliner'
-" Plug 'themue/vim-gode'
 call plug#end()
 " --------------------------------------------------
 " SETTINGS
@@ -92,6 +93,13 @@ let g:go_list_autoclose = 1
 let g:go_list_type = "quickfix"
 let g:go_list_height = 10
 
+let g:rainbow_active = 1
+let g:rainbow_conf = {
+	\	'guifgs': ['cyan', 'yellow', 'lightblue', 'green', 'brown', 'darkmagenta', 'red'],
+	\	'ctermfgs': ['cyan', 'yellow', 'lightblue', 'green', 'brown', 'darkmagenta', 'red'],
+	\	'operators': '_,\|;\|:=\|==\|!=\|<=\|>=\|<-\|->\|=_',
+	\	'parentheses': ['start=/(/ end=/)/ fold', 'start=/\[/ end=/\]/ fold', 'start=/{/ end=/}/ fold']
+	\}
 " --------------------------------------------------
 " CONDITIONAL SETTINGS
 " --------------------------------------------------
@@ -103,6 +111,7 @@ if has("multi_byte")
     setglobal fileencoding=utf-8
 endif
 if has("gui_running")
+  set guioptions=Te
   if has("gui_gtk2") || has("gui_gtk3")
     set guifont=Go\ Mono\ 16
   elseif has("gui_photon")
@@ -126,7 +135,7 @@ function! g:KbdGerman()
 endfunction
 
 function! g:KbdProgramming()
-    imap ü <C-]>
+    imap ü <C-[>
     imap ö [
     imap ä ]
     imap Ö {
@@ -136,8 +145,8 @@ endfunction
 
 command! KbdGerman      :call KbdGerman()
 command! KbdProgramming :call KbdProgramming()
-command! Todo noautocmd vimgrep /TODO\|FIXME/j ** | cw
-command! MkTags noautocmd !gotags -R -sort * > tags
+command! Todo           noautocmd vimgrep /TODO\|FIXME/j ** | cw
+command! MkTags         noautocmd !gotags -R -sort * > tags
 " --------------------------------------------------
 " KEY MAPPINGS
 " --------------------------------------------------
@@ -182,17 +191,19 @@ map <S-L> gt
 " Buffers
 "
 nmap <leader>hh :bprevious<cr>
+nmap <leader>jj :tabnext<cr>
+nmap <leader>kk :tabprevious<cr>
 nmap <leader>ll :bnext<cr>
 nmap <leader>xx :bdelete<cr>
 "
 " FZF
 "
-nnoremap <C-F>o :Files<cr>
-nnoremap <C-F>f :Buffers<cr>
-nnoremap <C-F>t :Tags<cr>
-nnoremap <C-F>m :Commits<cr>
-nnoremap <C-F>l :Lines<cr>
-nnoremap <C-F>c :Commands<cr>
+nnoremap <C-P>o :Files<cr>
+nnoremap <C-P>p :Buffers<cr>
+nnoremap <C-P>t :Tags<cr>
+nnoremap <C-P>m :Commits<cr>
+nnoremap <C-P>l :Lines<cr>
+nnoremap <C-P>c :Commands<cr>
 "
 " Edit and source .vimrc
 "
@@ -201,7 +212,6 @@ nmap <leader>sv :source $MYVIMRC<cr>
 "
 " Misc
 "
-inoremap jj              <esc>
 inoremap <leader>ww      <esc>:w<cr>
 nnoremap <leader>ww      :w<cr>
 nmap     <leader>cn      :cnext<cr>
@@ -228,20 +238,22 @@ if has("autocmd")
 	" Go together with vim-go.
 	autocmd FileType go nmap <localleader>b :GoBuild<cr>
 	autocmd FileType go nmap <localleader>B :GoTestCompile<cr>
-	autocmd FileType go nmap <localleader>c :GoCoverage<cr>
-	autocmd FileType go nmap <localleader>C :GoCallstack<cr>
-	autocmd FileType go nmap <localleader>d :GoDeps<cr>
+	autocmd FileType go nmap <localleader>c :GoCallers<cr>
+	autocmd FileType go nmap <localleader>C :GoCallees<cr>
+	autocmd FileType go nmap <localleader>d :GoDecls<cr>
 	autocmd FileType go nmap <localleader>D :GoDef<cr>
 	autocmd FileType go nmap <localleader>E :GoCallees<cr>
 	autocmd FileType go nmap <localleader>f :GoFmt<cr>
 	autocmd FileType go nmap <localleader>F :GoImports<cr>
-	autocmd FileType go nmap <localleader>i :GoLint<cr>
+	autocmd FileType go nmap <localleader>i :GoImpl<cr>
 	autocmd FileType go nmap <localleader>I :GoInstall<cr>
-	autocmd FileType go nmap <localleader>l :GoDecls<cr>
+	autocmd FileType go nmap <localleader>l :GoLint<cr>
 	autocmd FileType go nmap <localleader>L :GoDeclsDir<cr>
+	autocmd FileType go nmap <localleader>o :GoCoverage<cr>
+	autocmd FileType go nmap <localleader>p :GoDeps<cr>
 	autocmd FileType go nmap <localleader>P :GoChannelPeers<cr>
 	autocmd FileType go nmap <localleader>r :GoReferrers<cr>
-	autocmd FileType go nmap <localleader>R :GoCallers<cr>
+	autocmd FileType go nmap <localleader>s :GoCallstack<cr>
 	autocmd FileType go nmap <localleader>S :GoDescribe<cr>
 	autocmd FileType go nmap <localleader>t :GoTestFunc<cr>
 	autocmd FileType go nmap <localleader>T :GoTest<cr>
