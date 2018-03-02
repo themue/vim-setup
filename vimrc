@@ -225,9 +225,7 @@ nmap     <leader>tt      :TagbarToggle<cr>
 nmap     <leader>qq      :qa<cr>
 nnoremap <leader><space> :nohlsearch<cr>
 nnoremap <leader>N       :setlocal number!<cr>
-
 inoremap jj              <esc>
-inoremap <esc>           <nop>
 
 vnoremap < <gv
 vnoremap > >gv
