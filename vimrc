@@ -28,7 +28,6 @@ Plug 'pangloss/vim-javascript'
 Plug 'guns/vim-clojure-static'
 Plug 'othree/html5.vim'
 Plug 'guns/xterm-color-table.vim'
-Plug 'vimoutliner/vimoutliner'
 call plug#end()
 " --------------------------------------------------
 " SETTINGS
@@ -89,9 +88,10 @@ let g:go_fmt_command = "goimports"
 let g:go_auto_type_info = 1
 let g:go_updatetime = 500
 let g:go_info_mode = 'gocode'
-let g:go_list_autoclose = 1
 let g:go_list_type = "quickfix"
 let g:go_list_height = 10
+let g:go_test_show_name = 1
+let g:go_test_timeout = '30s'
 
 let g:rainbow_active = 1
 let g:rainbow_conf = {
@@ -226,6 +226,9 @@ nmap     <leader>qq      :qa<cr>
 nnoremap <leader><space> :nohlsearch<cr>
 nnoremap <leader>N       :setlocal number!<cr>
 
+inoremap jj              <esc>
+inoremap <esc>           <nop>
+
 vnoremap < <gv
 vnoremap > >gv
 " --------------------------------------------------
@@ -240,12 +243,11 @@ if has("autocmd")
 	autocmd FileType go nmap <localleader>B :GoTestCompile<cr>
 	autocmd FileType go nmap <localleader>c :GoCallers<cr>
 	autocmd FileType go nmap <localleader>C :GoCallees<cr>
-	autocmd FileType go nmap <localleader>d :GoDecls<cr>
-	autocmd FileType go nmap <localleader>D :GoDef<cr>
-	autocmd FileType go nmap <localleader>E :GoCallees<cr>
+	autocmd FileType go nmap <localleader>d :GoDef<cr>
+	autocmd FileType go nmap <localleader>D :GoDecls<cr>
 	autocmd FileType go nmap <localleader>f :GoFmt<cr>
 	autocmd FileType go nmap <localleader>F :GoImports<cr>
-	autocmd FileType go nmap <localleader>i :GoImpl<cr>
+	autocmd FileType go nmap <localleader>i :GoImplements<cr>
 	autocmd FileType go nmap <localleader>I :GoInstall<cr>
 	autocmd FileType go nmap <localleader>l :GoLint<cr>
 	autocmd FileType go nmap <localleader>L :GoDeclsDir<cr>
