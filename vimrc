@@ -221,7 +221,8 @@ nmap     <leader>co      :colder<cr>
 nmap     <leader>cc      :cclose<cr>
 nmap     <leader>fn      :cnfile<cr>
 nmap     <leader>fp      :cpfile<cr>
-nmap     <leader>tt      :TagbarToggle<cr>
+nmap     <leader>gg      :TagbarToggle<cr>
+nmap     <leader>tt      :terminal<cr>
 nmap     <leader>qq      :qa<cr>
 nnoremap <leader><space> :nohlsearch<cr>
 nnoremap <leader>N       :setlocal number!<cr>
