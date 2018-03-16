@@ -162,7 +162,7 @@ nnoremap <leader>P  "+P
 vnoremap <leader>p  "+p
 vnoremap <leader>P  "+P
 
-inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<cr>"
+inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 "
 " Move visual block
 "
@@ -172,10 +172,10 @@ vnoremap K :m '<-2<CR>gv=gv
 " Searching
 "
 nmap <leader>s          :%s//gc<LEFT><LEFT><LEFT>
-nmap <leader>sw         :%s/\<<C-r><C-w>\>//g<Left><Left>
+nmap <leader>sw         :%s/\<<C-r><C-w>\>//g<LEFT><LEFT>
 nmap <expr> <leader>sr  ':%s/' . @/ . '//gc<LEFT><LEFT><LEFT>'
 nmap <leader>g          :vimgrep // **/*<LEFT><LEFT><LEFT><LEFT><LEFT><LEFT>
-nmap <leader>a          :Ack *<LEFT>
+nmap <leader>a          :Ack -i  *<LEFT><LEFT>
 nnoremap n nzzzv
 nnoremap N Nzzzv
 "
@@ -190,43 +190,44 @@ map <S-L> gt
 "
 " Buffers
 "
-nmap <leader>hh :bprevious<cr>
-nmap <leader>jj :tabnext<cr>
-nmap <leader>kk :tabprevious<cr>
-nmap <leader>ll :bnext<cr>
-nmap <leader>xx :bdelete<cr>
+nmap <leader>hh :bprevious<CR>
+nmap <leader>jj :tabnext<CR>
+nmap <leader>kk :tabprevious<CR>
+nmap <leader>ll :bnext<CR>
+nmap <leader>xx :bdelete<CR>
 "
 " FZF
 "
-nnoremap <C-P>o :Files<cr>
-nnoremap <C-P>p :Buffers<cr>
-nnoremap <C-P>t :Tags<cr>
-nnoremap <C-P>m :Commits<cr>
-nnoremap <C-P>l :Lines<cr>
-nnoremap <C-P>c :Commands<cr>
+nnoremap <C-P>o    :Files<CR>
+nnoremap <C-P>p    :Buffers<CR>
+nnoremap <leader>. :Buffers<CR>
+nnoremap <C-P>t    :Tags<CR>
+nnoremap <C-P>m    :Commits<CR>
+nnoremap <C-P>l    :Lines<CR>
+nnoremap <C-P>c    :Commands<CR>
 "
 " Edit and source .vimrc
 "
-nmap <leader>ev :tabedit $MYVIMRC<cr>
-nmap <leader>sv :source $MYVIMRC<cr>
+nmap <leader>ev :tabedit $MYVIMRC<CR>
+nmap <leader>sv :source $MYVIMRC<CR>
 "
 " Misc
 "
-inoremap <leader>ww      <esc>:w<cr>
-nnoremap <leader>ww      :w<cr>
-nmap     <leader>cn      :cnext<cr>
-nmap     <leader>cp      :cprev<cr>
-nmap     <leader>cw      :cnewer<cr>
-nmap     <leader>co      :colder<cr>
-nmap     <leader>cc      :cclose<cr>
-nmap     <leader>fn      :cnfile<cr>
-nmap     <leader>fp      :cpfile<cr>
-nmap     <leader>gg      :TagbarToggle<cr>
-nmap     <leader>tt      :terminal<cr>
-nmap     <leader>qq      :qa<cr>
-nnoremap <leader><space> :nohlsearch<cr>
-nnoremap <leader>N       :setlocal number!<cr>
-inoremap jj              <esc>
+inoremap <leader>ww      <ESC>:w<CR>
+nnoremap <leader>ww      :w<CR>
+nmap     <leader>cc      :cclose<CR>
+nmap     <leader>nn      :cnext<CR>
+nmap     <leader>pp      :cprev<CR>
+nmap     <leader>cw      :cnewer<CR>
+nmap     <leader>co      :colder<CR>
+nmap     <leader>fn      :cnfile<CR>
+nmap     <leader>fp      :cpfile<CR>
+nmap     <leader>gg      :TagbarToggle<CR>
+nmap     <leader>tt      :terminal<CR>
+nmap     <leader>qq      :qa<CR>
+nnoremap <leader><space> :nohlsearch<CR>
+nnoremap <leader>N       :setlocal number!<CR>
+inoremap jj              <ESC>
 
 vnoremap < <gv
 vnoremap > >gv
@@ -238,29 +239,29 @@ if has("autocmd")
 	autocmd BufWritePre * :%s/\s\+$//e
 	autocmd BufReadPost * if line("'\"") | exe "'\"" | endif
 	" Go together with vim-go.
-	autocmd FileType go nmap <localleader>b :GoBuild<cr>
-	autocmd FileType go nmap <localleader>B :GoTestCompile<cr>
-	autocmd FileType go nmap <localleader>c :GoCallers<cr>
-	autocmd FileType go nmap <localleader>C :GoCallees<cr>
-	autocmd FileType go nmap <localleader>d :GoDef<cr>
-	autocmd FileType go nmap <localleader>D :GoDecls<cr>
-	autocmd FileType go nmap <localleader>f :GoFmt<cr>
-	autocmd FileType go nmap <localleader>F :GoImports<cr>
-	autocmd FileType go nmap <localleader>i :GoImplements<cr>
-	autocmd FileType go nmap <localleader>I :GoInstall<cr>
-	autocmd FileType go nmap <localleader>l :GoLint<cr>
-	autocmd FileType go nmap <localleader>L :GoDeclsDir<cr>
-	autocmd FileType go nmap <localleader>o :GoCoverage<cr>
-	autocmd FileType go nmap <localleader>p :GoDeps<cr>
-	autocmd FileType go nmap <localleader>P :GoChannelPeers<cr>
-	autocmd FileType go nmap <localleader>r :GoReferrers<cr>
-	autocmd FileType go nmap <localleader>s :GoCallstack<cr>
-	autocmd FileType go nmap <localleader>S :GoDescribe<cr>
-	autocmd FileType go nmap <localleader>t :GoTestFunc<cr>
-	autocmd FileType go nmap <localleader>T :GoTest<cr>
-	autocmd FileType go nmap <localleader>v :GoVet<cr>
-	autocmd FileType go nmap <localleader>V :GoDocVertical<cr>
-	autocmd FileType go nmap <localleader>X :GoRun<cr>
+	autocmd FileType go nmap <localleader>b :GoBuild<CR>
+	autocmd FileType go nmap <localleader>B :GoTestCompile<CR>
+	autocmd FileType go nmap <localleader>c :GoCallers<CR>
+	autocmd FileType go nmap <localleader>C :GoCallees<CR>
+	autocmd FileType go nmap <localleader>d :GoDef<CR>
+	autocmd FileType go nmap <localleader>D :GoDecls<CR>
+	autocmd FileType go nmap <localleader>f :GoFmt<CR>
+	autocmd FileType go nmap <localleader>F :GoImports<CR>
+	autocmd FileType go nmap <localleader>i :GoImplements<CR>
+	autocmd FileType go nmap <localleader>I :GoInstall<CR>
+	autocmd FileType go nmap <localleader>l :GoLint<CR>
+	autocmd FileType go nmap <localleader>L :GoDeclsDir<CR>
+	autocmd FileType go nmap <localleader>o :GoCoverage<CR>
+	autocmd FileType go nmap <localleader>p :GoDeps<CR>
+	autocmd FileType go nmap <localleader>P :GoChannelPeers<CR>
+	autocmd FileType go nmap <localleader>r :GoReferrers<CR>
+	autocmd FileType go nmap <localleader>s :GoCallstack<CR>
+	autocmd FileType go nmap <localleader>S :GoDescribe<CR>
+	autocmd FileType go nmap <localleader>t :GoTestFunc<CR>
+	autocmd FileType go nmap <localleader>T :GoTest<CR>
+	autocmd FileType go nmap <localleader>v :GoVet<CR>
+	autocmd FileType go nmap <localleader>V :GoDocVertical<CR>
+	autocmd FileType go nmap <localleader>X :GoRun<CR>
 endif
 " Keep undo history across sessions by storing it in a file.
 if has('persistent_undo')
