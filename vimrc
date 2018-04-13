@@ -21,7 +21,8 @@ Plug 'tpope/vim-scriptease'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-vinegar'
-Plug 'fatih/vim-go'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'zchee/vim-vgo'
 Plug 'nsf/gocode'
 Plug 'tomlion/vim-solidity'
 Plug 'pangloss/vim-javascript'
@@ -176,6 +177,7 @@ nmap <leader>sw         :%s/\<<C-r><C-w>\>//g<LEFT><LEFT>
 nmap <expr> <leader>sr  ':%s/' . @/ . '//gc<LEFT><LEFT><LEFT>'
 nmap <leader>g          :vimgrep // **/*<LEFT><LEFT><LEFT><LEFT><LEFT><LEFT>
 nmap <leader>a          :Ack -i  *<LEFT><LEFT>
+nmap <leader>aw         :Ack <C-r><C-w> *
 nnoremap n nzzzv
 nnoremap N Nzzzv
 "
@@ -202,7 +204,7 @@ nnoremap <C-P>o    :Files<CR>
 nnoremap <C-P>p    :Buffers<CR>
 nnoremap <leader>. :Buffers<CR>
 nnoremap <C-P>t    :Tags<CR>
-nnoremap <C-P>m    :Commits<CR>
+nnoremap <C-P>h    :Commits<CR>
 nnoremap <C-P>l    :Lines<CR>
 nnoremap <C-P>c    :Commands<CR>
 "
