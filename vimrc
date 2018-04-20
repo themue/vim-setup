@@ -4,12 +4,14 @@
 call plug#begin('~/.vim/plugged')
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'mileszs/ack.vim'
+Plug 'majutsushi/tagbar'
+Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'ervandew/supertab'
 Plug 'jiangmiao/auto-pairs'
 Plug 'luochen1990/rainbow'
 Plug 'w0rp/ale'
-Plug 'mileszs/ack.vim'
-Plug 'majutsushi/tagbar'
 Plug 'dkprice/vim-easygrep'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -20,7 +22,6 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-scriptease'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
-Plug 'tpope/vim-vinegar'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'zchee/vim-vgo'
 Plug 'nsf/gocode'
@@ -213,6 +214,11 @@ nnoremap <C-P>c    :Commands<CR>
 nmap <leader>ev :tabedit $MYVIMRC<CR>
 nmap <leader>sv :source $MYVIMRC<CR>
 "
+" Toggles
+"
+nnoremap <C-T>g :TagbarToggle<CR>
+nnoremap <C-T>t :NERDTreeToggle<CR>
+"
 " Misc
 "
 inoremap <leader>ww      <ESC>:w<CR>
@@ -224,7 +230,6 @@ nmap     <leader>cw      :cnewer<CR>
 nmap     <leader>co      :colder<CR>
 nmap     <leader>fn      :cnfile<CR>
 nmap     <leader>fp      :cpfile<CR>
-nmap     <leader>gg      :TagbarToggle<CR>
 nmap     <leader>tt      :terminal<CR>
 nmap     <leader>qq      :qa<CR>
 nnoremap <leader><space> :nohlsearch<CR>
