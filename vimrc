@@ -27,7 +27,7 @@ Plug 'zchee/vim-vgo'
 Plug 'nsf/gocode'
 Plug 'tomlion/vim-solidity'
 Plug 'pangloss/vim-javascript'
-Plug 'guns/vim-clojure-static'
+Plug 'zah/nim.vim'
 Plug 'othree/html5.vim'
 Plug 'guns/xterm-color-table.vim'
 call plug#end()
@@ -216,8 +216,9 @@ nmap <leader>sv :source $MYVIMRC<CR>
 "
 " Toggles
 "
-nnoremap <C-T>g :TagbarToggle<CR>
 nnoremap <C-T>t :NERDTreeToggle<CR>
+nnoremap <C-T>g :TagbarToggle<CR>
+nnoremap <C-T>e :terminal<CR>
 "
 " Misc
 "
@@ -230,7 +231,6 @@ nmap     <leader>cw      :cnewer<CR>
 nmap     <leader>co      :colder<CR>
 nmap     <leader>fn      :cnfile<CR>
 nmap     <leader>fp      :cpfile<CR>
-nmap     <leader>tt      :terminal<CR>
 nmap     <leader>qq      :qa<CR>
 nnoremap <leader><space> :nohlsearch<CR>
 nnoremap <leader>N       :setlocal number!<CR>
@@ -267,7 +267,7 @@ if has("autocmd")
 	autocmd FileType go nmap <localleader>t :GoTestFunc<CR>
 	autocmd FileType go nmap <localleader>T :GoTest<CR>
 	autocmd FileType go nmap <localleader>v :GoVet<CR>
-	autocmd FileType go nmap <localleader>V :GoDocVertical<CR>
+	autocmd FileType go nmap <localleader>V :GoDoc<CR>
 	autocmd FileType go nmap <localleader>X :GoRun<CR>
 endif
 " Keep undo history across sessions by storing it in a file.
