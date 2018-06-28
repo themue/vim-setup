@@ -4,12 +4,11 @@
 call plug#begin('~/.vim/plugged')
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'mileszs/ack.vim'
 Plug 'majutsushi/tagbar'
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'ervandew/supertab'
-Plug 'jiangmiao/auto-pairs'
+Plug 'yuttie/comfortable-motion.vim'
 Plug 'luochen1990/rainbow'
 Plug 'w0rp/ale'
 Plug 'dkprice/vim-easygrep'
@@ -22,12 +21,15 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-scriptease'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'fatih/vim-go'
 Plug 'zchee/vim-vgo'
 Plug 'nsf/gocode'
-Plug 'tomlion/vim-solidity'
-Plug 'pangloss/vim-javascript'
-Plug 'zah/nim.vim'
+Plug 'vim-erlang/vim-erlang-runtime'
+Plug 'vim-erlang/vim-erlang-compiler'
+Plug 'vim-erlang/vim-erlang-omnicomplete'
+Plug 'vim-erlang/vim-erlang-tags'
+Plug 'vim-erlang/vim-erlang-skeletons'
+Plug 'vim-erlang/vim-dialyzer'
 Plug 'othree/html5.vim'
 Plug 'guns/xterm-color-table.vim'
 call plug#end()
@@ -80,10 +82,16 @@ syntax on
 let mapleader = "-"
 let maplocalleader = "#"
 
-let g:SuperTabDefaultCompletionType = "<C-x><C-o>"
-let g:ale_completion_enabled = 1
+let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 
-let g:airline#extensions#tabline#enabled = 1
+let g:deoplete#enable_at_startup = 1
+let g:SuperTabDefaultCompletionType = "<C-x><C-o>"
+
+let g:ale_completion_enabled = 1
+let g:ale_erlang_erlc_options = "-I /Volumes/Data/Code/src/tideland.one/*"
+let g:ale_linters = {'go': ['gometalinter']}
+
+let g:airline#extensions#tabline#enabled = 0
 let g:airline_theme = "sol"
 
 let g:go_fmt_command = "goimports"
@@ -115,13 +123,13 @@ endif
 if has("gui_running")
   set guioptions=Te
   if has("gui_gtk2") || has("gui_gtk3")
-    set guifont=Go\ Mono\ 16
+    set guifont=IBM\ Plex\ Mono\ 15
   elseif has("gui_photon")
-    set guifont=Go\ Mono:h16
+    set guifont=IBM\ Plex\ Mono:h15
   elseif has("x11")
     set guifont=-*-courier-medium-r-normal-*-*-180-*-*-m-*-*
   else
-    set guifont=Go_Mono:h16
+    set guifont=IBM_Plex_Mono:h15
   endif
 endif
 " --------------------------------------------------
@@ -177,8 +185,7 @@ nmap <leader>s          :%s//gc<LEFT><LEFT><LEFT>
 nmap <leader>sw         :%s/\<<C-r><C-w>\>//g<LEFT><LEFT>
 nmap <expr> <leader>sr  ':%s/' . @/ . '//gc<LEFT><LEFT><LEFT>'
 nmap <leader>g          :vimgrep // **/*<LEFT><LEFT><LEFT><LEFT><LEFT><LEFT>
-nmap <leader>a          :Ack -i  *<LEFT><LEFT>
-nmap <leader>aw         :Ack <C-r><C-w> *
+nmap <leader>a          :Ag<SPACE>
 nnoremap n nzzzv
 nnoremap N Nzzzv
 "
@@ -202,12 +209,14 @@ nmap <leader>xx :bdelete<CR>
 " FZF
 "
 nnoremap <C-P>o    :Files<CR>
+nnoremap <C-P>g    :GFiles<CR>
 nnoremap <C-P>p    :Buffers<CR>
 nnoremap <leader>. :Buffers<CR>
 nnoremap <C-P>t    :Tags<CR>
 nnoremap <C-P>h    :Commits<CR>
 nnoremap <C-P>l    :Lines<CR>
 nnoremap <C-P>c    :Commands<CR>
+nnoremap <C-P>a    :Ag <C-R><C-W><CR>
 "
 " Edit and source .vimrc
 "
@@ -238,6 +247,8 @@ inoremap jj              <ESC>
 
 vnoremap < <gv
 vnoremap > >gv
+
+nmap     <localleader>   :Make<CR>
 " --------------------------------------------------
 " ACTIONS
 " --------------------------------------------------
@@ -245,7 +256,7 @@ if has("autocmd")
 	" Write and read buffer.
 	autocmd BufWritePre * :%s/\s\+$//e
 	autocmd BufReadPost * if line("'\"") | exe "'\"" | endif
-	" Go together with vim-go.
+	" Go / vim-go.
 	autocmd FileType go nmap <localleader>b :GoBuild<CR>
 	autocmd FileType go nmap <localleader>B :GoTestCompile<CR>
 	autocmd FileType go nmap <localleader>c :GoCallers<CR>
@@ -269,6 +280,7 @@ if has("autocmd")
 	autocmd FileType go nmap <localleader>v :GoVet<CR>
 	autocmd FileType go nmap <localleader>V :GoDoc<CR>
 	autocmd FileType go nmap <localleader>X :GoRun<CR>
+	" Erlang.
 endif
 " Keep undo history across sessions by storing it in a file.
 if has('persistent_undo')
