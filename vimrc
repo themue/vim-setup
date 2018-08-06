@@ -5,8 +5,6 @@ call plug#begin('~/.vim/plugged')
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'majutsushi/tagbar'
-Plug 'scrooloose/nerdtree'
-Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'ervandew/supertab'
 Plug 'yuttie/comfortable-motion.vim'
 Plug 'luochen1990/rainbow'
@@ -21,6 +19,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-scriptease'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-vinegar'
 Plug 'fatih/vim-go'
 Plug 'zchee/vim-vgo'
 Plug 'nsf/gocode'
@@ -71,15 +70,16 @@ set ttyscroll=3
 set laststatus=2
 set encoding=utf-8
 filetype plugin indent on
-set tabstop=4
 set shiftwidth=4
+set tabstop=4
 set noexpandtab
+set timeoutlen=2000
 
 set t_Co=256
 colorscheme muedark
 syntax on
 
-let mapleader = "-"
+let mapleader = "+"
 let maplocalleader = "#"
 
 let $FZF_DEFAULT_COMMAND = 'ag -g ""'
@@ -89,7 +89,7 @@ let g:SuperTabDefaultCompletionType = "<C-x><C-o>"
 
 let g:ale_completion_enabled = 1
 let g:ale_erlang_erlc_options = "-I /Volumes/Data/Code/src/tideland.one/*"
-let g:ale_linters = {'go': ['gometalinter']}
+let g:ale_linters = {'go': ['gometalinter'], 'erlang': ['syntaxerl']}
 
 let g:airline#extensions#tabline#enabled = 0
 let g:airline_theme = "sol"
@@ -225,12 +225,20 @@ nmap <leader>sv :source $MYVIMRC<CR>
 "
 " Toggles
 "
-nnoremap <C-T>t :NERDTreeToggle<CR>
 nnoremap <C-T>g :TagbarToggle<CR>
-nnoremap <C-T>e :terminal<CR>
+nnoremap <C-T>t :terminal<CR>
 "
 " Misc
 "
+inoremap <C-A>a <ESC>
+inoremap <C-A>w <ESC>:w<CR>
+nnoremap <C-A>w :w<CR>
+nnoremap <C-A>x :bdelete<CR>
+nnoremap <C-A>c :cclose<CR>
+nnoremap <C-A>n :cnext<CR>
+nnoremap <C-A>p :cnext<CR>
+nnoremap <C-A>q :qa<CR>
+
 inoremap <leader>ww      <ESC>:w<CR>
 nnoremap <leader>ww      :w<CR>
 nmap     <leader>cc      :cclose<CR>
