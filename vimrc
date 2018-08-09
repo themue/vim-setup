@@ -206,39 +206,40 @@ nmap <leader>kk :tabprevious<CR>
 nmap <leader>ll :bnext<CR>
 nmap <leader>xx :bdelete<CR>
 "
-" FZF
+" Ctrl-P
 "
-nnoremap <C-P>o    :Files<CR>
-nnoremap <C-P>g    :GFiles<CR>
-nnoremap <C-P>p    :Buffers<CR>
-nnoremap <leader>. :Buffers<CR>
-nnoremap <C-P>t    :Tags<CR>
-nnoremap <C-P>h    :Commits<CR>
-nnoremap <C-P>l    :Lines<CR>
-nnoremap <C-P>c    :Commands<CR>
-nnoremap <C-P>a    :Ag <C-R><C-W><CR>
+nnoremap <C-P>o :Files<CR>
+nnoremap <C-P>g :GFiles<CR>
+nnoremap <C-P>p :Buffers<CR>
+nnoremap <C-P>t :Tags<CR>
+nnoremap <C-P>b :BTags<CR>
+nnoremap <C-P>h :Commits<CR>
+nnoremap <C-P>n :BCommits<CR>
+nnoremap <C-P>l :Lines<CR>
+nnoremap <C-P>c :Commands<CR>
+nnoremap <C-P>x :History:<CR>
+nnoremap <C-P>a :Ag <C-R><C-W><CR>
+"
+" Ctrl-T
+"
+inoremap <C-T>t <ESC>
+nnoremap <C-T>g :TagbarToggle<CR>
+nnoremap <C-T>l :terminal<CR>
+inoremap <C-T>w <ESC>:w<CR>
+nnoremap <C-T>w :w<CR>
+nnoremap <C-T>x :bdelete<CR>
+nnoremap <C-T>c :cclose<CR>
+nnoremap <C-T>n :cnext<CR>
+nnoremap <C-T>p :cnext<CR>
+nnoremap <C-T>q :qa<CR>
 "
 " Edit and source .vimrc
 "
 nmap <leader>ev :tabedit $MYVIMRC<CR>
 nmap <leader>sv :source $MYVIMRC<CR>
 "
-" Toggles
-"
-nnoremap <C-T>g :TagbarToggle<CR>
-nnoremap <C-T>t :terminal<CR>
-"
 " Misc
 "
-inoremap <C-A>a <ESC>
-inoremap <C-A>w <ESC>:w<CR>
-nnoremap <C-A>w :w<CR>
-nnoremap <C-A>x :bdelete<CR>
-nnoremap <C-A>c :cclose<CR>
-nnoremap <C-A>n :cnext<CR>
-nnoremap <C-A>p :cnext<CR>
-nnoremap <C-A>q :qa<CR>
-
 inoremap <leader>ww      <ESC>:w<CR>
 nnoremap <leader>ww      :w<CR>
 nmap     <leader>cc      :cclose<CR>
