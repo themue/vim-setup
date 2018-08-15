@@ -6,7 +6,6 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'majutsushi/tagbar'
 Plug 'ervandew/supertab'
-Plug 'yuttie/comfortable-motion.vim'
 Plug 'luochen1990/rainbow'
 Plug 'w0rp/ale'
 Plug 'dkprice/vim-easygrep'
@@ -181,9 +180,11 @@ vnoremap K :m '<-2<CR>gv=gv
 "
 " Searching
 "
-nmap <leader>s          :%s//gc<LEFT><LEFT><LEFT>
-nmap <leader>sw         :%s/\<<C-r><C-w>\>//g<LEFT><LEFT>
-nmap <expr> <leader>sr  ':%s/' . @/ . '//gc<LEFT><LEFT><LEFT>'
+nmap <leader>s          //gc<LEFT><LEFT><LEFT>
+nmap <leader>sw         /\<<C-r><C-w>\>//gc<CR>
+nmap <leader>r          :%s//gc<LEFT><LEFT><LEFT>
+nmap <leader>rw         :%s/\<<C-r><C-w>\>//g<LEFT><LEFT>
+nmap <expr> <leader>rr  ':%s/' . @/ . '//gc<LEFT><LEFT><LEFT>'
 nmap <leader>g          :vimgrep // **/*<LEFT><LEFT><LEFT><LEFT><LEFT><LEFT>
 nmap <leader>a          :Ag<SPACE>
 nnoremap n nzzzv
@@ -208,30 +209,24 @@ nmap <leader>xx :bdelete<CR>
 "
 " Ctrl-P
 "
-nnoremap <C-P>o :Files<CR>
-nnoremap <C-P>g :GFiles<CR>
-nnoremap <C-P>p :Buffers<CR>
-nnoremap <C-P>t :Tags<CR>
-nnoremap <C-P>b :BTags<CR>
-nnoremap <C-P>h :Commits<CR>
-nnoremap <C-P>n :BCommits<CR>
-nnoremap <C-P>l :Lines<CR>
-nnoremap <C-P>c :Commands<CR>
-nnoremap <C-P>x :History:<CR>
 nnoremap <C-P>a :Ag <C-R><C-W><CR>
-"
-" Ctrl-T
-"
-inoremap <C-T>t <ESC>
-nnoremap <C-T>g :TagbarToggle<CR>
-nnoremap <C-T>l :terminal<CR>
-inoremap <C-T>w <ESC>:w<CR>
-nnoremap <C-T>w :w<CR>
-nnoremap <C-T>x :bdelete<CR>
-nnoremap <C-T>c :cclose<CR>
-nnoremap <C-T>n :cnext<CR>
-nnoremap <C-T>p :cnext<CR>
-nnoremap <C-T>q :qa<CR>
+nnoremap <C-P>b :BTags<CR>
+nnoremap <C-P>c :cclose<CR>
+nnoremap <C-P>d :bdelete<CR>
+nnoremap <C-P>f :Lines<CR>
+nnoremap <C-P>g :GFiles<CR>
+nnoremap <C-P>h :History:<CR>
+nnoremap <C-P>i :Commits<CR>
+nnoremap <C-P>l :terminal<CR>
+nnoremap <C-P>m :Commands<CR>
+nnoremap <C-P>n :BCommits<CR>
+nnoremap <C-P>o :Files<CR>
+nnoremap <C-P>q :qa<CR>
+nnoremap <C-P>r :TagbarToggle<CR>
+nnoremap <C-P>t :Tags<CR>
+nnoremap <C-P>w :w<CR>
+inoremap <C-P>w <ESC>:w<CR>
+inoremap <C-P>x <ESC>
 "
 " Edit and source .vimrc
 "
@@ -289,7 +284,6 @@ if has("autocmd")
 	autocmd FileType go nmap <localleader>v :GoVet<CR>
 	autocmd FileType go nmap <localleader>V :GoDoc<CR>
 	autocmd FileType go nmap <localleader>X :GoRun<CR>
-	" Erlang.
 endif
 " Keep undo history across sessions by storing it in a file.
 if has('persistent_undo')
@@ -300,7 +294,7 @@ if has('persistent_undo')
 	let &undodir = vimundodir
 	set undofile
 endif
-
+" Standard keyboard for programming.
 call KbdProgramming()
 " ==================================================
 " EOF
