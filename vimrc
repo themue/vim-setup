@@ -221,6 +221,7 @@ nnoremap <C-P>l :terminal<CR>
 nnoremap <C-P>m :Commands<CR>
 nnoremap <C-P>n :BCommits<CR>
 nnoremap <C-P>o :Files<CR>
+nnoremap <C-P>p :Buffers<CR>
 nnoremap <C-P>q :qa<CR>
 nnoremap <C-P>r :TagbarToggle<CR>
 nnoremap <C-P>t :Tags<CR>
