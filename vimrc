@@ -21,7 +21,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-vinegar'
 Plug 'fatih/vim-go'
 Plug 'zchee/vim-vgo'
-Plug 'nsf/gocode'
+Plug 'mdempsky/gocode'
 Plug 'vim-erlang/vim-erlang-runtime'
 Plug 'vim-erlang/vim-erlang-compiler'
 Plug 'vim-erlang/vim-erlang-omnicomplete'
@@ -186,7 +186,9 @@ nmap <leader>r          :%s//gc<LEFT><LEFT><LEFT>
 nmap <leader>rw         :%s/\<<C-r><C-w>\>//g<LEFT><LEFT>
 nmap <expr> <leader>rr  ':%s/' . @/ . '//gc<LEFT><LEFT><LEFT>'
 nmap <leader>g          :vimgrep // **/*<LEFT><LEFT><LEFT><LEFT><LEFT><LEFT>
-nmap <leader>a          :Ag<SPACE>
+nmap <leader>as         :Ag<SPACE>
+nmap <leader>aw         :Ag <C-r><C-w><CR>
+
 nnoremap n nzzzv
 nnoremap N Nzzzv
 "
@@ -199,25 +201,16 @@ map <C-H> <C-W>h<C-W>_
 map <S-H> gT
 map <S-L> gt
 "
-" Buffers
-"
-nmap <leader>hh :bprevious<CR>
-nmap <leader>jj :tabnext<CR>
-nmap <leader>kk :tabprevious<CR>
-nmap <leader>ll :bnext<CR>
-nmap <leader>xx :bdelete<CR>
-"
 " Ctrl-P
 "
 nnoremap <C-P>a :Ag <C-R><C-W><CR>
 nnoremap <C-P>b :BTags<CR>
 nnoremap <C-P>c :cclose<CR>
 nnoremap <C-P>d :bdelete<CR>
-nnoremap <C-P>f :Lines<CR>
 nnoremap <C-P>g :GFiles<CR>
 nnoremap <C-P>h :History:<CR>
 nnoremap <C-P>i :Commits<CR>
-nnoremap <C-P>l :terminal<CR>
+nnoremap <C-P>l :Lines<CR>
 nnoremap <C-P>m :Commands<CR>
 nnoremap <C-P>n :BCommits<CR>
 nnoremap <C-P>o :Files<CR>
@@ -228,6 +221,7 @@ nnoremap <C-P>t :Tags<CR>
 nnoremap <C-P>w :w<CR>
 inoremap <C-P>w <ESC>:w<CR>
 inoremap <C-P>x <ESC>
+nnoremap <C-P>z :terminal<CR>
 "
 " Edit and source .vimrc
 "
@@ -238,6 +232,11 @@ nmap <leader>sv :source $MYVIMRC<CR>
 "
 inoremap <leader>ww      <ESC>:w<CR>
 nnoremap <leader>ww      :w<CR>
+nmap     <leader>hh      :bprevious<CR>
+nmap     <leader>jj      :tabnext<CR>
+nmap     <leader>kk      :tabprevious<CR>
+nmap     <leader>ll      :bnext<CR>
+nmap     <leader>xx      :bdelete<CR>
 nmap     <leader>cc      :cclose<CR>
 nmap     <leader>nn      :cnext<CR>
 nmap     <leader>pp      :cprev<CR>
@@ -252,8 +251,6 @@ inoremap jj              <ESC>
 
 vnoremap < <gv
 vnoremap > >gv
-
-nmap     <localleader>   :Make<CR>
 " --------------------------------------------------
 " ACTIONS
 " --------------------------------------------------
