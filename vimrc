@@ -22,12 +22,6 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-vinegar'
 Plug 'fatih/vim-go'
 Plug 'mdempsky/gocode'
-Plug 'vim-erlang/vim-erlang-runtime'
-Plug 'vim-erlang/vim-erlang-compiler'
-Plug 'vim-erlang/vim-erlang-omnicomplete'
-Plug 'vim-erlang/vim-erlang-tags'
-Plug 'vim-erlang/vim-erlang-skeletons'
-Plug 'vim-erlang/vim-dialyzer'
 Plug 'othree/html5.vim'
 Plug 'guns/xterm-color-table.vim'
 call plug#end()
@@ -81,14 +75,13 @@ syntax on
 let mapleader = "+"
 let maplocalleader = "#"
 
-let $FZF_DEFAULT_COMMAND = 'ag -g ""'
+let $FZF_DEFAULT_COMMAND = 'ag -g "" --ignore vendor'
 
 let g:deoplete#enable_at_startup = 1
 let g:SuperTabDefaultCompletionType = "<C-x><C-o>"
 
 let g:ale_completion_enabled = 1
-let g:ale_erlang_erlc_options = "-I /Volumes/Data/Code/src/tideland.one/*"
-let g:ale_linters = {'go': ['gometalinter'], 'erlang': ['syntaxerl']}
+let g:ale_linters = {'go': ['gometalinter']}
 
 let g:airline#extensions#tabline#enabled = 0
 let g:airline_theme = "sol"
