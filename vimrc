@@ -4,6 +4,7 @@
 call plug#begin('~/.vim/plugged')
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'junegunn/limelight.vim'
 Plug 'majutsushi/tagbar'
 Plug 'ervandew/supertab'
 Plug 'luochen1990/rainbow'
@@ -21,7 +22,6 @@ Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-vinegar'
 Plug 'fatih/vim-go'
-Plug 'mdempsky/gocode'
 Plug 'othree/html5.vim'
 Plug 'guns/xterm-color-table.vim'
 call plug#end()
@@ -75,13 +75,13 @@ syntax on
 let mapleader = "+"
 let maplocalleader = "#"
 
-let $FZF_DEFAULT_COMMAND = 'ag -g "" --ignore vendor'
+let $FZF_DEFAULT_COMMAND = 'ag -g "" --ignore /vendor/'
 
 let g:deoplete#enable_at_startup = 1
 let g:SuperTabDefaultCompletionType = "<C-x><C-o>"
 
 let g:ale_completion_enabled = 1
-let g:ale_linters = {'go': ['gometalinter']}
+let g:ale_linters = {'go': ['golint']}
 
 let g:airline#extensions#tabline#enabled = 0
 let g:airline_theme = "sol"
@@ -89,7 +89,8 @@ let g:airline_theme = "sol"
 let g:go_fmt_command = "goimports"
 let g:go_auto_type_info = 1
 let g:go_updatetime = 500
-let g:go_info_mode = 'gocode'
+let g:go_def_mode = 'gopls'
+let g:go_info_mode = 'gopls'
 let g:go_list_type = "quickfix"
 let g:go_list_height = 10
 let g:go_test_show_name = 1
@@ -264,6 +265,7 @@ if has("autocmd")
 	autocmd FileType go nmap <localleader>I :GoInstall<CR>
 	autocmd FileType go nmap <localleader>l :GoLint<CR>
 	autocmd FileType go nmap <localleader>L :GoDeclsDir<CR>
+	autocmd FileType go nmap <localleader>n :GoInfo<CR>
 	autocmd FileType go nmap <localleader>o :GoCoverage<CR>
 	autocmd FileType go nmap <localleader>p :GoDeps<CR>
 	autocmd FileType go nmap <localleader>P :GoChannelPeers<CR>
