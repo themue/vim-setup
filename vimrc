@@ -4,25 +4,23 @@
 call plug#begin('~/.vim/plugged')
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'junegunn/limelight.vim'
 Plug 'majutsushi/tagbar'
 Plug 'ervandew/supertab'
-Plug 'luochen1990/rainbow'
 Plug 'w0rp/ale'
 Plug 'dkprice/vim-easygrep'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'tpope/vim-dispatch'
 Plug 'chrisbra/vim-diff-enhanced'
 Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-scriptease'
-Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-sensible'
-Plug 'tpope/vim-surround'
+" Plug 'tpope/vim-surround'
 Plug 'tpope/vim-vinegar'
-Plug 'fatih/vim-go'
-Plug 'othree/html5.vim'
+Plug 'myitcv/govim'
+" Plug 'fatih/vim-go'
 Plug 'guns/xterm-color-table.vim'
 call plug#end()
 " --------------------------------------------------
@@ -30,45 +28,49 @@ call plug#end()
 " --------------------------------------------------
 filetype off
 filetype plugin indent off
+
 set autoread
+set autowrite
 set autoindent
-set incsearch
-set noignorecase
-set smartcase
-set hlsearch
-set number
+
 set cursorline
+set hlsearch
+set incsearch
+set number
 set showcmd
+set smartcase
 set splitright
 set splitbelow
-set noswapfile
-set autowrite
-set showcmd
 set splitright
 set splitbelow
-set noswapfile
-set autowrite
+set ttyfast
+
 set backspace=indent,eol,start
 set omnifunc=syntaxcomplete#Complete
 set completeopt-=preview
 set foldmethod=syntax
 set foldnestmax=10
-set nofoldenable
 set foldlevel=0
 set shell=bash
 set mouse=a
-set ttymouse=xterm2
-set ttyfast
+set ttymouse=sgr
 set ttyscroll=3
 set laststatus=2
 set encoding=utf-8
-filetype plugin indent on
 set shiftwidth=4
 set tabstop=4
-set noexpandtab
 set timeoutlen=2000
-
 set t_Co=256
+
+set noexpandtab
+set nobackup
+set nocompatible
+set nofoldenable
+set noignorecase
+set noswapfile
+set nowritebackup
+
+filetype plugin indent on
 colorscheme muedark
 syntax on
 
@@ -95,14 +97,6 @@ let g:go_list_type = "quickfix"
 let g:go_list_height = 10
 let g:go_test_show_name = 1
 let g:go_test_timeout = '30s'
-
-let g:rainbow_active = 1
-let g:rainbow_conf = {
-	\	'guifgs': ['cyan', 'yellow', 'lightblue', 'green', 'brown', 'darkmagenta', 'red'],
-	\	'ctermfgs': ['cyan', 'yellow', 'lightblue', 'green', 'brown', 'darkmagenta', 'red'],
-	\	'operators': '_,\|;\|:=\|==\|!=\|<=\|>=\|<-\|->\|=_',
-	\	'parentheses': ['start=/(/ end=/)/ fold', 'start=/\[/ end=/\]/ fold', 'start=/{/ end=/}/ fold']
-	\}
 " --------------------------------------------------
 " CONDITIONAL SETTINGS
 " --------------------------------------------------
