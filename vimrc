@@ -4,7 +4,6 @@
 call plug#begin('~/.vim/plugged')
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'majutsushi/tagbar'
 Plug 'ervandew/supertab'
 Plug 'w0rp/ale'
 Plug 'dkprice/vim-easygrep'
@@ -17,10 +16,8 @@ Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-scriptease'
 Plug 'tpope/vim-sensible'
-" Plug 'tpope/vim-surround'
 Plug 'tpope/vim-vinegar'
-Plug 'myitcv/govim'
-" Plug 'fatih/vim-go'
+Plug 'themue/vim-gode'
 Plug 'guns/xterm-color-table.vim'
 call plug#end()
 " --------------------------------------------------
@@ -87,16 +84,6 @@ let g:ale_linters = {'go': ['golint']}
 
 let g:airline#extensions#tabline#enabled = 0
 let g:airline_theme = "sol"
-
-let g:go_fmt_command = "goimports"
-let g:go_auto_type_info = 1
-let g:go_updatetime = 500
-let g:go_def_mode = 'gopls'
-let g:go_info_mode = 'gopls'
-let g:go_list_type = "quickfix"
-let g:go_list_height = 10
-let g:go_test_show_name = 1
-let g:go_test_timeout = '30s'
 " --------------------------------------------------
 " CONDITIONAL SETTINGS
 " --------------------------------------------------
@@ -246,31 +233,6 @@ if has("autocmd")
 	" Write and read buffer.
 	autocmd BufWritePre * :%s/\s\+$//e
 	autocmd BufReadPost * if line("'\"") | exe "'\"" | endif
-	" Go / vim-go.
-	autocmd FileType go nmap <localleader>b :GoBuild<CR>
-	autocmd FileType go nmap <localleader>B :GoTestCompile<CR>
-	autocmd FileType go nmap <localleader>c :GoCallers<CR>
-	autocmd FileType go nmap <localleader>C :GoCallees<CR>
-	autocmd FileType go nmap <localleader>d :GoDef<CR>
-	autocmd FileType go nmap <localleader>D :GoDecls<CR>
-	autocmd FileType go nmap <localleader>f :GoFmt<CR>
-	autocmd FileType go nmap <localleader>F :GoImports<CR>
-	autocmd FileType go nmap <localleader>i :GoImplements<CR>
-	autocmd FileType go nmap <localleader>I :GoInstall<CR>
-	autocmd FileType go nmap <localleader>l :GoLint<CR>
-	autocmd FileType go nmap <localleader>L :GoDeclsDir<CR>
-	autocmd FileType go nmap <localleader>n :GoInfo<CR>
-	autocmd FileType go nmap <localleader>o :GoCoverage<CR>
-	autocmd FileType go nmap <localleader>p :GoDeps<CR>
-	autocmd FileType go nmap <localleader>P :GoChannelPeers<CR>
-	autocmd FileType go nmap <localleader>r :GoReferrers<CR>
-	autocmd FileType go nmap <localleader>s :GoCallstack<CR>
-	autocmd FileType go nmap <localleader>S :GoDescribe<CR>
-	autocmd FileType go nmap <localleader>t :GoTestFunc<CR>
-	autocmd FileType go nmap <localleader>T :GoTest<CR>
-	autocmd FileType go nmap <localleader>v :GoVet<CR>
-	autocmd FileType go nmap <localleader>V :GoDoc<CR>
-	autocmd FileType go nmap <localleader>X :GoRun<CR>
 endif
 " Keep undo history across sessions by storing it in a file.
 if has('persistent_undo')
