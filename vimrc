@@ -6,6 +6,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'ervandew/supertab'
 Plug 'w0rp/ale'
+Plug 'majutsushi/tagbar'
 Plug 'dkprice/vim-easygrep'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -18,10 +19,7 @@ Plug 'tpope/vim-scriptease'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-vinegar'
-" Plug 'myitcv/govim'
-" Plug 'themue/vim-gode'
 Plug 'fatih/vim-go'
-" Plug 'wellle/context.vim'
 Plug 'guns/xterm-color-table.vim'
 call plug#end()
 " --------------------------------------------------
@@ -101,6 +99,34 @@ let g:go_list_type = "quickfix"
 let g:go_list_height = 10
 let g:go_test_show_name = 1
 let g:go_test_timeout = '30s'
+
+let g:tagbar_type_go = {
+	\ 'ctagstype' : 'go',
+	\ 'kinds'     : [
+		\ 'p:package',
+		\ 'i:imports:1',
+		\ 'c:constants',
+		\ 'v:variables',
+		\ 't:types',
+		\ 'n:interfaces',
+		\ 'w:fields',
+		\ 'e:embedded',
+		\ 'm:methods',
+		\ 'r:constructor',
+		\ 'f:functions'
+	\ ],
+	\ 'sro' : '.',
+	\ 'kind2scope' : {
+		\ 't' : 'ctype',
+		\ 'n' : 'ntype'
+	\ },
+	\ 'scope2kind' : {
+		\ 'ctype' : 't',
+		\ 'ntype' : 'n'
+	\ },
+	\ 'ctagsbin'  : 'gotags',
+	\ 'ctagsargs' : '-sort -silent'
+\ }
 " --------------------------------------------------
 " CONDITIONAL SETTINGS
 " --------------------------------------------------
@@ -249,7 +275,7 @@ vnoremap > >gv
 " --------------------------------------------------
 if has("autocmd")
 	" Write and read buffer.
-	" autocmd BufWritePre * :%s/\s\+$//e
+	autocmd BufWritePre * :%s/\s\+$//e
 	autocmd BufReadPost * if line("'\"") | exe "'\"" | endif
 	" Go / vim-go.
  	autocmd FileType go nmap <localleader>b :GoBuild<CR>
