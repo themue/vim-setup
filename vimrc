@@ -196,20 +196,6 @@ inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
 "
-" Searching
-"
-nmap <leader>s          //gc<LEFT><LEFT><LEFT>
-nmap <leader>sw         /\<<C-r><C-w>\>//gc<CR>
-nmap <leader>r          :%s//gc<LEFT><LEFT><LEFT>
-nmap <leader>rw         :%s/\<<C-r><C-w>\>//g<LEFT><LEFT>
-nmap <expr> <leader>rr  ':%s/' . @/ . '//gc<LEFT><LEFT><LEFT>'
-nmap <leader>g          :vimgrep // **/*<LEFT><LEFT><LEFT><LEFT><LEFT><LEFT>
-nmap <leader>as         :Ag<SPACE>
-nmap <leader>aw         :Ag <C-r><C-w><CR>
-
-nnoremap n nzzzv
-nnoremap N Nzzzv
-"
 " Console
 "
 map <S-H> gT
@@ -239,6 +225,14 @@ nnoremap <C-P>z :terminal<CR>
 "
 " Ctrl-K
 "
+nnoremap <C-K>sn      //gc<LEFT><LEFT><LEFT>
+nnoremap <C-K>sw      /\<<C-r><C-w>\>//gc<CR>
+nnoremap <C-K>rn      :%s//gc<LEFT><LEFT><LEFT>
+nnoremap <C-K>rw      :%s/\<<C-r><C-w>\>//g<LEFT><LEFT>
+nnoremap <C-K>gg      :vimgrep // **/*<LEFT><LEFT><LEFT><LEFT><LEFT><LEFT>
+nnoremap <C-K>as      :Ag<SPACE>
+nnoremap <C-K>aw      :Ag <C-r><C-w><CR>
+nnoremap <C-K><space> :nohlsearch<CR>
 
 "
 " Edit and source .vimrc
@@ -267,6 +261,8 @@ nmap     <leader>qq      :qa<CR>
 nnoremap <leader><space> :nohlsearch<CR>
 nnoremap <leader>N       :setlocal number!<CR>
 inoremap jj              <ESC>
+nnoremap n               nzzzv
+nnoremap N               Nzzzv
 
 vnoremap < <gv
 vnoremap > >gv
