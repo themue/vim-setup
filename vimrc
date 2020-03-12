@@ -6,7 +6,8 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'ervandew/supertab'
 Plug 'w0rp/ale'
-Plug 'majutsushi/tagbar'
+Plug 'liuchengxu/vista.vim'
+Plug 'pechorin/any-jump.vim'
 Plug 'dkprice/vim-easygrep'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -48,7 +49,7 @@ set backspace=indent,eol,start
 set omnifunc=syntaxcomplete#Complete
 set completeopt-=preview
 set foldmethod=syntax
-set foldnestmax=10
+set foldnestmax=4
 set foldlevel=0
 set shell=bash
 set mouse=a
@@ -100,33 +101,13 @@ let g:go_list_height = 10
 let g:go_test_show_name = 1
 let g:go_test_timeout = '30s'
 
-let g:tagbar_type_go = {
-	\ 'ctagstype' : 'go',
-	\ 'kinds'     : [
-		\ 'p:package',
-		\ 'i:imports:1',
-		\ 'c:constants',
-		\ 'v:variables',
-		\ 't:types',
-		\ 'n:interfaces',
-		\ 'w:fields',
-		\ 'e:embedded',
-		\ 'm:methods',
-		\ 'r:constructor',
-		\ 'f:functions'
-	\ ],
-	\ 'sro' : '.',
-	\ 'kind2scope' : {
-		\ 't' : 'ctype',
-		\ 'n' : 'ntype'
-	\ },
-	\ 'scope2kind' : {
-		\ 'ctype' : 't',
-		\ 'ntype' : 'n'
-	\ },
-	\ 'ctagsbin'  : 'gotags',
-	\ 'ctagsargs' : '-sort -silent'
-\ }
+let g:vista_icon_indent = [">", ""]
+let g:vista#renderer#enable_icon = 0
+
+let g:any_jump_list_numbers = 1
+let g:any_jump_ignored_files = ['*.tmp', '*.temp', 'tags']
+let g:any_jump_references_only_for_current_filetype = 1
+let g:any_jump_search_prefered_engine = 'ag'
 " --------------------------------------------------
 " CONDITIONAL SETTINGS
 " --------------------------------------------------
@@ -203,7 +184,7 @@ map <S-L> gt
 "
 " Ctrl-P
 "
-nnoremap <C-P>a :Ag <C-R><C-W><CR>
+nnoremap <C-P>a :Gblame<CR>
 nnoremap <C-P>b :BTags<CR>
 nnoremap <C-P>c :cclose<CR>
 nnoremap <C-P>d :bdelete<CR>
@@ -216,8 +197,8 @@ nnoremap <C-P>n :BCommits<CR>
 nnoremap <C-P>o :Files<CR>
 nnoremap <C-P>p :Buffers<CR>
 nnoremap <C-P>q :qa<CR>
-nnoremap <C-P>r :TagbarToggle<CR>
 nnoremap <C-P>t :Tags<CR>
+nnoremap <C-P>v :Vista!!<CR>
 nnoremap <C-P>w :w<CR>
 inoremap <C-P>w <ESC>:w<CR>
 inoremap <C-P>x <ESC>
@@ -225,13 +206,16 @@ nnoremap <C-P>z :terminal<CR>
 "
 " Ctrl-K
 "
-nnoremap <C-K>sn      //gc<LEFT><LEFT><LEFT>
-nnoremap <C-K>sw      /\<<C-r><C-w>\>//gc<CR>
-nnoremap <C-K>rn      :%s//gc<LEFT><LEFT><LEFT>
-nnoremap <C-K>rw      :%s/\<<C-r><C-w>\>//g<LEFT><LEFT>
-nnoremap <C-K>gg      :vimgrep // **/*<LEFT><LEFT><LEFT><LEFT><LEFT><LEFT>
-nnoremap <C-K>as      :Ag<SPACE>
-nnoremap <C-K>aw      :Ag <C-r><C-w><CR>
+nnoremap <C-K>s       //gc<LEFT><LEFT><LEFT>
+nnoremap <C-K>h       /\<<C-r><C-w>\>//gc<CR>
+nnoremap <C-K>r       :%s///gc<LEFT><LEFT><LEFT><LEFT>
+nnoremap <C-K>w       :%s/\<<C-r><C-w>\>//g<LEFT><LEFT>
+nnoremap <C-K>g       :Ag <C-r><C-w><CR>
+nnoremap <C-K>a       :Ag<SPACE>
+nnoremap <C-K>j       :AnyJump<CR>
+xnoremap <C-K>j       :AnyJumpVisual<CR>
+nnoremap <C-K>b       :AnyJumpBack<CR>
+nnoremap <C-K>l       :AnyJumpLastResults<CR>
 nnoremap <C-K><space> :nohlsearch<CR>
 
 "

@@ -15,41 +15,41 @@ let g:colors_name = 'muedark'
 " Settings for colored terminals.
 "
 if &t_Co >= 256
-  hi Normal           ctermbg=0    ctermfg=249  cterm=none
-  hi Comment          ctermbg=0    ctermfg=160  cterm=none
-  hi Statement        ctermbg=0    ctermfg=173  cterm=none
-  hi Identifier       ctermbg=0    ctermfg=40   cterm=none
-  hi Type             ctermbg=0    ctermfg=214  cterm=none
-  hi Function         ctermbg=0    ctermfg=202  cterm=none
-  hi PreProc          ctermbg=0    ctermfg=95   cterm=none
+  hi Normal           ctermbg=none ctermfg=249  cterm=none
+  hi Comment          ctermbg=none ctermfg=160  cterm=none
+  hi Statement        ctermbg=none ctermfg=173  cterm=none
+  hi Identifier       ctermbg=none ctermfg=40   cterm=none
+  hi Type             ctermbg=none ctermfg=214  cterm=none
+  hi Function         ctermbg=none ctermfg=202  cterm=none
+  hi PreProc          ctermbg=none ctermfg=95   cterm=none
 
-  hi Constant         ctermbg=0    ctermfg=166  cterm=none
-  hi Boolean          ctermbg=0    ctermfg=124  cterm=none
-  hi String           ctermbg=0    ctermfg=106  cterm=none
+  hi Constant         ctermbg=none ctermfg=166  cterm=none
+  hi Boolean          ctermbg=none ctermfg=124  cterm=none
+  hi String           ctermbg=none ctermfg=106  cterm=none
 
-  hi LineNr           ctermbg=0    ctermfg=241  cterm=none
+  hi LineNr           ctermbg=none ctermfg=241  cterm=none
   hi MatchParen                    ctermfg=34   cterm=none
-  hi Conceal          ctermbg=0    ctermfg=245  cterm=none
+  hi Conceal          ctermbg=none ctermfg=245  cterm=none
   hi ColorColumn      ctermbg=236  ctermfg=none cterm=none
   hi SignColumn       ctermbg=233  ctermfg=242  cterm=none
-  hi Folded           ctermbg=0    ctermfg=88   cterm=none
-  hi FoldColumn       ctermbg=0    ctermfg=88   cterm=none
+  hi Folded           ctermbg=none ctermfg=88   cterm=none
+  hi FoldColumn       ctermbg=none ctermfg=88   cterm=none
 
-  hi Directory        ctermbg=0    ctermfg=143  cterm=none
-  hi Special          ctermbg=0    ctermfg=77   cterm=none
-  hi SpecialKey       ctermbg=0    ctermfg=240  cterm=none
-  hi Underlined       ctermbg=0    ctermfg=none cterm=underline
+  hi Directory        ctermbg=none ctermfg=143  cterm=none
+  hi Special          ctermbg=none ctermfg=77   cterm=none
+  hi SpecialKey       ctermbg=none ctermfg=240  cterm=none
+  hi Underlined       ctermbg=none ctermfg=none cterm=underline
 
   hi Visual           ctermbg=16   ctermfg=250  cterm=reverse
-  hi VisualNOS        ctermbg=0    ctermfg=none cterm=underline
+  hi VisualNOS        ctermbg=none ctermfg=none cterm=underline
   hi IncSearch        ctermbg=106  ctermfg=235  cterm=none
   hi Search           ctermbg=106  ctermfg=235  cterm=none
 
-  hi Title            ctermbg=0    ctermfg=109  cterm=none
+  hi Title            ctermbg=none ctermfg=109  cterm=none
   hi StatusLine       ctermbg=16   ctermfg=255  cterm=bold
   hi StatusLineNC     ctermbg=16   ctermfg=233  cterm=none
   hi VertSplit        ctermbg=252  ctermfg=none cterm=none
-  hi ModeMsg          ctermbg=0    ctermfg=111  cterm=none
+  hi ModeMsg          ctermbg=none ctermfg=111  cterm=none
   hi WildMenu         ctermbg=236  ctermfg=111  cterm=underline
 
   hi DiffAdd          ctermbg=64   ctermfg=235  cterm=none
@@ -62,33 +62,33 @@ if &t_Co >= 256
   hi PmenuSbar        ctermbg=137  ctermfg=none cterm=none
   hi PmenuThumb       ctermbg=136  ctermfg=none cterm=none
 
-  hi SpellBad         ctermbg=0    ctermfg=none cterm=undercurl
-  hi SpellCap         ctermbg=0    ctermfg=none cterm=undercurl
-  hi SpellLocal       ctermbg=0    ctermfg=none cterm=undercurl
-  hi SpellRare        ctermbg=0    ctermfg=none cterm=undercurl
+  hi SpellBad         ctermbg=none ctermfg=none cterm=undercurl
+  hi SpellCap         ctermbg=none ctermfg=none cterm=undercurl
+  hi SpellLocal       ctermbg=none ctermfg=none cterm=undercurl
+  hi SpellRare        ctermbg=none ctermfg=none cterm=undercurl
 
   hi ErrorMsg         ctermbg=124  ctermfg=235  cterm=none
-  hi WarningMsg       ctermbg=0    ctermfg=124  cterm=none
-  hi MoreMsg          ctermbg=0    ctermfg=111  cterm=none
-  hi Question         ctermbg=0    ctermfg=111  cterm=none
+  hi WarningMsg       ctermbg=none ctermfg=124  cterm=none
+  hi MoreMsg          ctermbg=none ctermfg=111  cterm=none
+  hi Question         ctermbg=none ctermfg=111  cterm=none
 
   hi TabLine          ctermbg=236  ctermfg=241  cterm=none
   hi TabLineSel       ctermbg=236  ctermfg=111  cterm=none
   hi TabLineFill      ctermbg=236  ctermfg=230  cterm=none
 
-  hi Error            ctermbg=0    ctermfg=124  cterm=reverse
-  hi Ignore           ctermbg=0    ctermfg=none cterm=none
-  hi Todo             ctermbg=0    ctermfg=214  cterm=none
+  hi Error            ctermbg=none ctermfg=124  cterm=reverse
+  hi Ignore           ctermbg=none ctermfg=none cterm=none
+  hi Todo             ctermbg=none ctermfg=214  cterm=none
 
-  hi NonText          ctermbg=0    ctermfg=240  cterm=none
+  hi NonText          ctermbg=none ctermfg=240  cterm=none
 
   hi Cursor           ctermbg=172  ctermfg=0    cterm=none
   hi CursorColumn     ctermbg=172  ctermfg=0    cterm=none
   hi CursorLine       ctermbg=235  ctermfg=none cterm=none
   hi CursorLineNr     ctermbg=235  ctermfg=220  cterm=none
 
-  hi HelpNormal       ctermbg=0    ctermfg=none cterm=none
-  hi HelpLeadBlank    ctermbg=0    ctermfg=none cterm=none
+  hi HelpNormal       ctermbg=none ctermfg=none cterm=none
+  hi HelpLeadBlank    ctermbg=none ctermfg=none cterm=none
 endif
 "
 " Settings for GUI
