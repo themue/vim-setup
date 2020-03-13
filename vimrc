@@ -198,7 +198,6 @@ nnoremap <C-P>o :Files<CR>
 nnoremap <C-P>p :Buffers<CR>
 nnoremap <C-P>q :qa<CR>
 nnoremap <C-P>t :Tags<CR>
-nnoremap <C-P>v :Vista!!<CR>
 nnoremap <C-P>w :w<CR>
 inoremap <C-P>w <ESC>:w<CR>
 inoremap <C-P>x <ESC>
@@ -216,6 +215,7 @@ nnoremap <C-K>j       :AnyJump<CR>
 xnoremap <C-K>j       :AnyJumpVisual<CR>
 nnoremap <C-K>b       :AnyJumpBack<CR>
 nnoremap <C-K>l       :AnyJumpLastResults<CR>
+nnoremap <C-K>v       :Vista!!<CR>
 nnoremap <C-K><space> :nohlsearch<CR>
 
 "
