@@ -6,7 +6,6 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'ervandew/supertab'
 Plug 'w0rp/ale'
-Plug 'liuchengxu/vista.vim'
 Plug 'pechorin/any-jump.vim'
 Plug 'dkprice/vim-easygrep'
 Plug 'vim-airline/vim-airline'
@@ -64,6 +63,7 @@ set t_Co=256
 set shell=fish
 set rtp+=/usr/local/opt/fzf
 set signcolumn=number
+set virtualedit=all
 
 set noexpandtab
 set nobackup
@@ -215,7 +215,6 @@ nnoremap <C-K>j       :AnyJump<CR>
 xnoremap <C-K>j       :AnyJumpVisual<CR>
 nnoremap <C-K>b       :AnyJumpBack<CR>
 nnoremap <C-K>l       :AnyJumpLastResults<CR>
-nnoremap <C-K>v       :Vista!!<CR>
 nnoremap <C-K><space> :nohlsearch<CR>
 
 "
