@@ -63,7 +63,6 @@ set t_Co=256
 set shell=fish
 set rtp+=/usr/local/opt/fzf
 set signcolumn=number
-set virtualedit=all
 
 set noexpandtab
 set nobackup
