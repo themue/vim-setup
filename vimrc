@@ -14,11 +14,12 @@ Plug 'chrisbra/vim-diff-enhanced'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-dispatch'
-Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-scriptease'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-vinegar'
+Plug 'tpope/vim-fugitive'
+Plug 'rbong/vim-flog'
 Plug 'fatih/vim-go'
 Plug 'guns/xterm-color-table.vim'
 call plug#end()
@@ -208,6 +209,7 @@ nnoremap <C-K>s       //gc<LEFT><LEFT><LEFT>
 nnoremap <C-K>h       /\<<C-r><C-w>\>//gc<CR>
 nnoremap <C-K>r       :%s///gc<LEFT><LEFT><LEFT><LEFT>
 nnoremap <C-K>w       :%s/\<<C-r><C-w>\>//g<LEFT><LEFT>
+nnoremap <C-K>c       :%S/\<<C-r><C-w>\>//g<LEFT><LEFT>
 nnoremap <C-K>g       :Ag <C-r><C-w><CR>
 nnoremap <C-K>a       :Ag<SPACE>
 nnoremap <C-K>j       :AnyJump<CR>
