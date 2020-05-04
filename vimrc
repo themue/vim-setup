@@ -93,6 +93,7 @@ let g:airline_theme = "sol"
 
 let g:go_fmt_command = "goimports"
 let g:go_auto_type_info = 1
+let g:go_metalinter_autosave = 0
 let g:go_updatetime = 500
 let g:go_def_mode = 'gopls'
 let g:go_info_mode = 'gopls'
@@ -206,7 +207,7 @@ nnoremap <C-P>z :terminal<CR>
 " Ctrl-K
 "
 nnoremap <C-K>s       //gc<LEFT><LEFT><LEFT>
-nnoremap <C-K>h       /\<<C-r><C-w>\>//gc<CR>
+nnoremap <C-K>f       /\<<C-r><C-w>\>//gc<CR>
 nnoremap <C-K>r       :%s///gc<LEFT><LEFT><LEFT><LEFT>
 nnoremap <C-K>w       :%s/\<<C-r><C-w>\>//g<LEFT><LEFT>
 nnoremap <C-K>c       :%S/\<<C-r><C-w>\>//g<LEFT><LEFT>
@@ -258,30 +259,33 @@ if has("autocmd")
 	autocmd BufWritePre * :%s/\s\+$//e
 	autocmd BufReadPost * if line("'\"") | exe "'\"" | endif
 	" Go / vim-go.
- 	autocmd FileType go nmap <localleader>b :GoBuild<CR>
- 	autocmd FileType go nmap <localleader>B :GoTestCompile<CR>
- 	autocmd FileType go nmap <localleader>c :GoCallers<CR>
- 	autocmd FileType go nmap <localleader>C :GoCallees<CR>
- 	autocmd FileType go nmap <localleader>d :GoDef<CR>
- 	autocmd FileType go nmap <localleader>D :GoDecls<CR>
- 	autocmd FileType go nmap <localleader>f :GoFmt<CR>
- 	autocmd FileType go nmap <localleader>F :GoImports<CR>
- 	autocmd FileType go nmap <localleader>i :GoImplements<CR>
- 	autocmd FileType go nmap <localleader>I :GoInstall<CR>
- 	autocmd FileType go nmap <localleader>l :GoLint<CR>
- 	autocmd FileType go nmap <localleader>L :GoDeclsDir<CR>
- 	autocmd FileType go nmap <localleader>n :GoInfo<CR>
- 	autocmd FileType go nmap <localleader>o :GoCoverage<CR>
- 	autocmd FileType go nmap <localleader>p :GoDeps<CR>
- 	autocmd FileType go nmap <localleader>P :GoChannelPeers<CR>
- 	autocmd FileType go nmap <localleader>r :GoReferrers<CR>
- 	autocmd FileType go nmap <localleader>s :GoCallstack<CR>
- 	autocmd FileType go nmap <localleader>S :GoDescribe<CR>
- 	autocmd FileType go nmap <localleader>t :GoTestFunc<CR>
- 	autocmd FileType go nmap <localleader>T :GoTest<CR>
- 	autocmd FileType go nmap <localleader>v :GoVet<CR>
- 	autocmd FileType go nmap <localleader>V :GoDoc<CR>
- 	autocmd FileType go nmap <localleader>X :GoRun<CR>
+ 	autocmd FileType go nmap <C-G>a :GoAddTags<CR>
+ 	autocmd FileType go nmap <C-G>A :GoRemoveTags<CR>
+ 	autocmd FileType go nmap <C-G>b :GoBuild<CR>
+ 	autocmd FileType go nmap <C-G>B :GoTestCompile<CR>
+ 	autocmd FileType go nmap <C-G>c :GoCallers<CR>
+ 	autocmd FileType go nmap <C-G>C :GoCallees<CR>
+ 	autocmd FileType go nmap <C-G>d :GoDef<CR>
+ 	autocmd FileType go nmap <C-G>D :GoDecls<CR>
+ 	autocmd FileType go nmap <C-G>e :GoErrCheck<CR>
+ 	autocmd FileType go nmap <C-G>f :GoFmt<CR>
+ 	autocmd FileType go nmap <C-G>F :GoImports<CR>
+ 	autocmd FileType go nmap <C-G>i :GoImplements<CR>
+ 	autocmd FileType go nmap <C-G>I :GoInstall<CR>
+ 	autocmd FileType go nmap <C-G>l :GoMetaLinter<CR>
+ 	autocmd FileType go nmap <C-G>L :GoDeclsDir<CR>
+ 	autocmd FileType go nmap <C-G>n :GoInfo<CR>
+ 	autocmd FileType go nmap <C-G>o :GoCoverage<CR>
+ 	autocmd FileType go nmap <C-G>p :GoDeps<CR>
+ 	autocmd FileType go nmap <C-G>P :GoChannelPeers<CR>
+ 	autocmd FileType go nmap <C-G>r :GoReferrers<CR>
+ 	autocmd FileType go nmap <C-G>s :GoCallstack<CR>
+ 	autocmd FileType go nmap <C-G>S :GoDescribe<CR>
+ 	autocmd FileType go nmap <C-G>t :GoTestFunc<CR>
+ 	autocmd FileType go nmap <C-G>T :GoTest<CR>
+ 	autocmd FileType go nmap <C-G>v :GoVet<CR>
+ 	autocmd FileType go nmap <C-G>V :GoDoc<CR>
+ 	autocmd FileType go nmap <C-G>X :GoRun<CR>
 endif
 " Keep undo history across sessions by storing it in a file.
 if has('persistent_undo')
