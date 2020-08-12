@@ -5,8 +5,6 @@ call plug#begin('~/.vim/plugged')
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'ervandew/supertab'
-Plug 'w0rp/ale'
-Plug 'pechorin/any-jump.vim'
 Plug 'dkprice/vim-easygrep'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -19,7 +17,6 @@ Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-fugitive'
-Plug 'rbong/vim-flog'
 Plug 'fatih/vim-go'
 Plug 'guns/xterm-color-table.vim'
 call plug#end()
@@ -51,7 +48,7 @@ set completeopt-=preview
 set foldmethod=syntax
 set foldnestmax=4
 set foldlevel=0
-set shell=bash
+set shell=zsh
 set mouse=a
 set ttymouse=sgr
 set ttyscroll=3
@@ -61,7 +58,6 @@ set shiftwidth=4
 set tabstop=4
 set timeoutlen=2000
 set t_Co=256
-set shell=fish
 set rtp+=/usr/local/opt/fzf
 set signcolumn=number
 
@@ -85,9 +81,6 @@ let $FZF_DEFAULT_COMMAND = 'ag -g "" --ignore /vendor/'
 let g:deoplete#enable_at_startup = 1
 let g:SuperTabDefaultCompletionType = "<C-x><C-o>"
 
-let g:ale_completion_enabled = 1
-let g:ale_linters = {'go': ['golint']}
-
 let g:airline#extensions#tabline#enabled = 0
 let g:airline_theme = "sol"
 
@@ -101,6 +94,7 @@ let g:go_list_type = "quickfix"
 let g:go_list_height = 10
 let g:go_test_show_name = 1
 let g:go_test_timeout = '30s'
+let g:go_term_enabled = 1
 
 let g:vista_icon_indent = [">", ""]
 let g:vista#renderer#enable_icon = 0
@@ -122,13 +116,13 @@ endif
 if has("gui_running")
   set guioptions=Te
   if has("gui_gtk2") || has("gui_gtk3")
-    set guifont=IBM\ Plex\ Mono\ 15
+    set guifont=JetBrains\ Mono\ 15
   elseif has("gui_photon")
-    set guifont=IBM\ Plex\ Mono:h15
+    set guifont=JetBrains\ Mono:h15
   elseif has("x11")
     set guifont=-*-courier-medium-r-normal-*-*-180-*-*-m-*-*
   else
-    set guifont=IBM_Plex_Mono:h15
+    set guifont=JetBrains_Mono:h15
   endif
 endif
 " --------------------------------------------------
@@ -213,10 +207,6 @@ nnoremap <C-K>w       :%s/\<<C-r><C-w>\>//g<LEFT><LEFT>
 nnoremap <C-K>c       :%S/\<<C-r><C-w>\>//g<LEFT><LEFT>
 nnoremap <C-K>g       :Ag <C-r><C-w><CR>
 nnoremap <C-K>a       :Ag<SPACE>
-nnoremap <C-K>j       :AnyJump<CR>
-xnoremap <C-K>j       :AnyJumpVisual<CR>
-nnoremap <C-K>b       :AnyJumpBack<CR>
-nnoremap <C-K>l       :AnyJumpLastResults<CR>
 nnoremap <C-K><space> :nohlsearch<CR>
 
 "
@@ -285,7 +275,7 @@ if has("autocmd")
  	autocmd FileType go nmap <C-G>T :GoTest<CR>
  	autocmd FileType go nmap <C-G>v :GoVet<CR>
  	autocmd FileType go nmap <C-G>V :GoDoc<CR>
- 	autocmd FileType go nmap <C-G>X :GoRun<CR>
+ 	autocmd FileType go nmap <C-G>X :GoRun %<CR>
 endif
 " Keep undo history across sessions by storing it in a file.
 if has('persistent_undo')
