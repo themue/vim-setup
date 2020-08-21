@@ -5,18 +5,14 @@ call plug#begin('~/.vim/plugged')
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'ervandew/supertab'
-Plug 'dkprice/vim-easygrep'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'chrisbra/vim-diff-enhanced'
 Plug 'airblade/vim-gitgutter'
-Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-scriptease'
 Plug 'tpope/vim-sensible'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-vinegar'
-Plug 'tpope/vim-fugitive'
 Plug 'fatih/vim-go'
 Plug 'guns/xterm-color-table.vim'
 call plug#end()
@@ -95,14 +91,6 @@ let g:go_list_height = 10
 let g:go_test_show_name = 1
 let g:go_test_timeout = '30s'
 let g:go_term_enabled = 1
-
-let g:vista_icon_indent = [">", ""]
-let g:vista#renderer#enable_icon = 0
-
-let g:any_jump_list_numbers = 1
-let g:any_jump_ignored_files = ['*.tmp', '*.temp', 'tags']
-let g:any_jump_references_only_for_current_filetype = 1
-let g:any_jump_search_prefered_engine = 'ag'
 " --------------------------------------------------
 " CONDITIONAL SETTINGS
 " --------------------------------------------------
@@ -180,9 +168,8 @@ map <S-L> gt
 " Ctrl-P
 "
 nnoremap <C-P>a :Gblame<CR>
-nnoremap <C-P>b :BTags<CR>
 nnoremap <C-P>c :cclose<CR>
-nnoremap <C-P>d :bdelete<CR>
+nnoremap <C-P>x :bdelete<CR>
 nnoremap <C-P>g :GFiles<CR>
 nnoremap <C-P>h :History:<CR>
 nnoremap <C-P>i :Commits<CR>
@@ -192,7 +179,8 @@ nnoremap <C-P>n :BCommits<CR>
 nnoremap <C-P>o :Files<CR>
 nnoremap <C-P>p :Buffers<CR>
 nnoremap <C-P>q :qa<CR>
-nnoremap <C-P>t :Tags<CR>
+nnoremap <C-P>t :BTags<CR>
+nnoremap <C-P>T :Tags<CR>
 nnoremap <C-P>w :w<CR>
 inoremap <C-P>w <ESC>:w<CR>
 inoremap <C-P>x <ESC>
@@ -207,6 +195,12 @@ nnoremap <C-K>w       :%s/\<<C-r><C-w>\>//g<LEFT><LEFT>
 nnoremap <C-K>c       :%S/\<<C-r><C-w>\>//g<LEFT><LEFT>
 nnoremap <C-K>g       :Ag <C-r><C-w><CR>
 nnoremap <C-K>a       :Ag<SPACE>
+nnoremap <C-K>n       :cnext<CR>
+nnoremap <C-K>p       :cprev<CR>
+nnoremap <C-K>k       :bnext<CR>
+nnoremap <C-K>j       :bprev<CR>
+nnoremap <C-K>l       :tabnext<CR>
+nnoremap <C-K>h       :tabprev<CR>
 nnoremap <C-K><space> :nohlsearch<CR>
 
 "
@@ -217,27 +211,17 @@ nmap <leader>sv :source $MYVIMRC<CR>
 "
 " Misc
 "
-inoremap <leader>ww      <ESC>:w<CR>
-nnoremap <leader>ww      :w<CR>
-nmap     <leader>hh      :bprevious<CR>
-nmap     <leader>jj      :tabnext<CR>
-nmap     <leader>kk      :tabprevious<CR>
-nmap     <leader>ll      :bnext<CR>
-nmap     <leader>xx      :bdelete<CR>
-nmap     <leader>cc      :cclose<CR>
-nmap     <leader>nn      :cnext<CR>
-nmap     <leader>pp      :cprev<CR>
-nmap     <leader>cw      :cnewer<CR>
-nmap     <leader>co      :colder<CR>
-nmap     <leader>fn      :cnfile<CR>
-nmap     <leader>fp      :cpfile<CR>
-nmap     <leader>tt      :terminal<CR>
-nmap     <leader>qq      :qa<CR>
-nnoremap <leader><space> :nohlsearch<CR>
-nnoremap <leader>N       :setlocal number!<CR>
-inoremap jj              <ESC>
-nnoremap n               nzzzv
-nnoremap N               Nzzzv
+inoremap <leader>ww       <ESC>:w<CR>
+nnoremap <leader>ww       :w<CR>
+nmap     <leader>xx       :bdelete<CR>
+nmap     <leader>cc       :cclose<CR>
+nmap     <leader>tt       :terminal<CR>
+nmap     <leader>qq       :qa<CR>
+nnoremap <leader><space>  :nohlsearch<CR>
+nnoremap <leader>N        :setlocal number!<CR>
+inoremap jj               <ESC>
+nnoremap n                nzzzv
+nnoremap N                Nzzzv
 
 vnoremap < <gv
 vnoremap > >gv
