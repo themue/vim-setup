@@ -89,7 +89,7 @@ let g:go_info_mode = 'gopls'
 let g:go_list_type = "quickfix"
 let g:go_list_height = 10
 let g:go_test_show_name = 1
-let g:go_test_timeout = '30s'
+let g:go_test_timeout = '60s'
 let g:go_term_enabled = 1
 " --------------------------------------------------
 " CONDITIONAL SETTINGS
