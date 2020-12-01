@@ -91,6 +91,7 @@ let g:go_list_height = 10
 let g:go_test_show_name = 1
 let g:go_test_timeout = '60s'
 let g:go_term_enabled = 1
+let g:go_term_mode = "split"
 " --------------------------------------------------
 " CONDITIONAL SETTINGS
 " --------------------------------------------------
@@ -134,8 +135,22 @@ function! g:KbdProgramming()
     imap ß /
 endfunction
 
+function! g:CheckTerminal(num)
+	if bufexists(str2nr(a:num))
+		exec ":buffer " . a:num
+		if &buftype == 'terminal'
+			exec 'bd'
+		endif
+	endif
+endfunction
+
+function! g:CloseTerminals()
+	let result = filter(range(1, bufnr('$')), 'CheckTerminal(v:val)')
+endfunction
+
 command! KbdGerman      :call KbdGerman()
 command! KbdProgramming :call KbdProgramming()
+command! CloseTerminals :call CloseTerminals()
 command! Todo           noautocmd vimgrep /TODO\|FIXME/j ** | cw
 command! MkTags         noautocmd !gotags -R -sort * > tags
 " --------------------------------------------------
@@ -183,7 +198,7 @@ nnoremap <C-P>t :BTags<CR>
 nnoremap <C-P>T :Tags<CR>
 nnoremap <C-P>w :w<CR>
 inoremap <C-P>w <ESC>:w<CR>
-inoremap <C-P>x <ESC>
+inoremap <C-P>x :CloseTerminals
 nnoremap <C-P>z :terminal<CR>
 "
 " Ctrl-K
@@ -202,7 +217,6 @@ nnoremap <C-K>j       :bprev<CR>
 nnoremap <C-K>l       :tabnext<CR>
 nnoremap <C-K>h       :tabprev<CR>
 nnoremap <C-K><space> :nohlsearch<CR>
-
 "
 " Edit and source .vimrc
 "
@@ -259,7 +273,7 @@ if has("autocmd")
  	autocmd FileType go nmap <C-G>T :GoTest<CR>
  	autocmd FileType go nmap <C-G>v :GoVet<CR>
  	autocmd FileType go nmap <C-G>V :GoDoc<CR>
- 	autocmd FileType go nmap <C-G>X :GoRun %<CR>
+ 	autocmd FileType go nmap <C-G>x :GoRun %<CR>
 endif
 " Keep undo history across sessions by storing it in a file.
 if has('persistent_undo')

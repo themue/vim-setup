@@ -16,7 +16,7 @@ let g:colors_name = 'muedark'
 "
 if &t_Co >= 256
   hi Normal           ctermbg=none ctermfg=249  cterm=none
-  hi Comment          ctermbg=none ctermfg=160  cterm=none
+  hi Comment          ctermbg=none ctermfg=33   cterm=none
   hi Statement        ctermbg=none ctermfg=173  cterm=none
   hi Identifier       ctermbg=none ctermfg=40   cterm=none
   hi Type             ctermbg=none ctermfg=214  cterm=none
