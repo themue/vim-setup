@@ -182,12 +182,10 @@ map <S-L> gt
 "
 " Ctrl-P
 "
-nnoremap <C-P>a :Gblame<CR>
-nnoremap <C-P>c :cclose<CR>
-nnoremap <C-P>x :bdelete<CR>
-nnoremap <C-P>g :GFiles<CR>
+nnoremap <C-P>b :Gblame<CR>
+nnoremap <C-P>c :Commits<CR>
+nnoremap <C-P>f :GFiles<CR>
 nnoremap <C-P>h :History:<CR>
-nnoremap <C-P>i :Commits<CR>
 nnoremap <C-P>l :Lines<CR>
 nnoremap <C-P>m :Commands<CR>
 nnoremap <C-P>n :BCommits<CR>
@@ -196,8 +194,7 @@ nnoremap <C-P>p :Buffers<CR>
 nnoremap <C-P>q :qa<CR>
 nnoremap <C-P>t :BTags<CR>
 nnoremap <C-P>T :Tags<CR>
-nnoremap <C-P>w :w<CR>
-inoremap <C-P>w <ESC>:w<CR>
+nnoremap <C-P>w :Windows<CR>
 inoremap <C-P>x :CloseTerminals
 nnoremap <C-P>z :terminal<CR>
 "
