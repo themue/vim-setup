@@ -74,6 +74,12 @@ let maplocalleader = "#"
 
 let $FZF_DEFAULT_COMMAND = 'ag -g "" --ignore /vendor/'
 
+let g:netrw_banner = 0
+let g:netrw_liststyle = 3
+let g:netrw_browse_split = 4
+let g:netrw_altv = 1
+let g:netrw_winsize = 25
+
 let g:deoplete#enable_at_startup = 1
 let g:SuperTabDefaultCompletionType = "<C-x><C-o>"
 
@@ -148,11 +154,11 @@ function! g:CloseTerminals()
 	let result = filter(range(1, bufnr('$')), 'CheckTerminal(v:val)')
 endfunction
 
-command! KbdGerman      :call KbdGerman()
-command! KbdProgramming :call KbdProgramming()
-command! CloseTerminals :call CloseTerminals()
-command! Todo           noautocmd vimgrep /TODO\|FIXME/j ** | cw
-command! MkTags         noautocmd !gotags -R -sort * > tags
+command! KbdGerman       :call KbdGerman()
+command! KbdProgramming  :call KbdProgramming()
+command! CloseTerminals  :call CloseTerminals()
+command! Todo            noautocmd vimgrep /TODO\|FIXME/j ** | cw
+command! MkTags          noautocmd !gotags -R -sort * > tags
 " --------------------------------------------------
 " KEY MAPPINGS
 " --------------------------------------------------
@@ -194,6 +200,7 @@ nnoremap <C-P>p :Buffers<CR>
 nnoremap <C-P>q :qa<CR>
 nnoremap <C-P>t :BTags<CR>
 nnoremap <C-P>T :Tags<CR>
+nnoremap <C-P>v :Vexplore<CR>
 nnoremap <C-P>w :Windows<CR>
 inoremap <C-P>x :CloseTerminals
 nnoremap <C-P>z :terminal<CR>
