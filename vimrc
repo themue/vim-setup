@@ -189,6 +189,7 @@ map <S-L> gt
 "
 " Ctrl-P
 "
+nnoremap <C-P>a :TagbarToggle<CR>
 nnoremap <C-P>b :Gblame<CR>
 nnoremap <C-P>c :Commits<CR>
 nnoremap <C-P>f :GFiles<CR>
@@ -200,7 +201,6 @@ nnoremap <C-P>o :Files<CR>
 nnoremap <C-P>p :Buffers<CR>
 nnoremap <C-P>q :qa<CR>
 nnoremap <C-P>t :BTags<CR>
-nnoremap <C-P>T :TagbarToggle<CR>
 nnoremap <C-P>v :Vexplore<CR>
 nnoremap <C-P>w :Windows<CR>
 inoremap <C-P>x :CloseTerminals
