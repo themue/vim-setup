@@ -5,6 +5,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'ervandew/supertab'
+Plug 'preservim/tagbar'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'chrisbra/vim-diff-enhanced'
@@ -199,7 +200,7 @@ nnoremap <C-P>o :Files<CR>
 nnoremap <C-P>p :Buffers<CR>
 nnoremap <C-P>q :qa<CR>
 nnoremap <C-P>t :BTags<CR>
-nnoremap <C-P>T :Tags<CR>
+nnoremap <C-P>T :TagbarToggle<CR>
 nnoremap <C-P>v :Vexplore<CR>
 nnoremap <C-P>w :Windows<CR>
 inoremap <C-P>x :CloseTerminals
