@@ -28,6 +28,7 @@ set autowrite
 set autoindent
 
 set cursorline
+set hidden
 set hlsearch
 set incsearch
 set number
