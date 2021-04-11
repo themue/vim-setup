@@ -58,6 +58,7 @@ set timeoutlen=2000
 set t_Co=256
 set rtp+=/usr/local/opt/fzf
 set signcolumn=number
+set viminfo='1000,f1
 
 set noexpandtab
 set nobackup
