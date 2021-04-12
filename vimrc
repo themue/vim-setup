@@ -232,8 +232,8 @@ nmap <leader>sv :source $MYVIMRC<CR>
 "
 " Misc
 "
-inoremap <leader>ww       <ESC>:w<CR>
-nnoremap <leader>ww       :w<CR>
+inoremap <leader>ww       <ESC>:wa<CR>
+nnoremap <leader>ww       :wa<CR>
 nmap     <leader>xx       :bdelete<CR>
 nmap     <leader>cc       :cclose<CR>
 nmap     <leader>tt       :terminal<CR>
