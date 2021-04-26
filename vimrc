@@ -184,11 +184,6 @@ inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
 "
-" Console
-"
-map <S-H> gT
-map <S-L> gt
-"
 " Ctrl-P
 "
 nnoremap <C-P>a :TagbarToggle<CR>
