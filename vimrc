@@ -123,6 +123,9 @@ if has("gui_running")
     set guifont=JetBrains_Mono:h15
   endif
 endif
+if has("macunix")
+  let g:tagbar_ctags_bin = "/opt/homebrew/bin/ctags"
+endif
 " --------------------------------------------------
 " FUNCTIONS AND COMMANDS
 " --------------------------------------------------
@@ -260,6 +263,7 @@ if has("autocmd")
  	autocmd FileType go nmap <C-G>e :GoErrCheck<CR>
  	autocmd FileType go nmap <C-G>f :GoFmt<CR>
  	autocmd FileType go nmap <C-G>F :GoImports<CR>
+ 	autocmd FileType go nmap <C-G>h :GoDoc<CR>
  	autocmd FileType go nmap <C-G>i :GoImplements<CR>
  	autocmd FileType go nmap <C-G>I :GoInstall<CR>
  	autocmd FileType go nmap <C-G>l :GoMetaLinter<CR>
@@ -274,7 +278,6 @@ if has("autocmd")
  	autocmd FileType go nmap <C-G>t :GoTestFunc<CR>
  	autocmd FileType go nmap <C-G>T :GoTest<CR>
  	autocmd FileType go nmap <C-G>v :GoVet<CR>
- 	autocmd FileType go nmap <C-G>V :GoDoc<CR>
  	autocmd FileType go nmap <C-G>x :GoRun %<CR>
 endif
 " Keep undo history across sessions by storing it in a file.
