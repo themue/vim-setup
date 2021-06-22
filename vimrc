@@ -274,6 +274,7 @@ if has("autocmd")
  	autocmd FileType go nmap <C-G>p :GoDeps<CR>
  	autocmd FileType go nmap <C-G>P :GoChannelPeers<CR>
  	autocmd FileType go nmap <C-G>r :GoReferrers<CR>
+ 	autocmd FileType go nmap <C-G>R :GoRename<CR>
  	autocmd FileType go nmap <C-G>s :GoCallstack<CR>
  	autocmd FileType go nmap <C-G>S :GoDescribe<CR>
  	autocmd FileType go nmap <C-G>t :GoTestFunc<CR>
