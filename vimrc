@@ -234,6 +234,7 @@ inoremap <leader>ww       <ESC>:wa<CR>
 nnoremap <leader>ww       :wa<CR>
 nmap     <leader>xx       :bdelete<CR>
 nmap     <leader>cc       :cclose<CR>
+nmap     <leader>oo       :only<CR>
 nmap     <leader>tt       :terminal<CR>
 nmap     <leader>qq       :qa<CR>
 nnoremap <leader><space>  :nohlsearch<CR>
