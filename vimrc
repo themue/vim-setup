@@ -259,15 +259,16 @@ if has("autocmd")
  	autocmd FileType go nmap <C-G>c :GoCallers<CR>
  	autocmd FileType go nmap <C-G>C :GoCallees<CR>
  	autocmd FileType go nmap <C-G>d :GoDef<CR>
- 	autocmd FileType go nmap <C-G>D :GoDecls<CR>
+ 	autocmd FileType go nmap <C-G>D :GoDefPop<CR>
  	autocmd FileType go nmap <C-G>e :GoErrCheck<CR>
  	autocmd FileType go nmap <C-G>f :GoFmt<CR>
  	autocmd FileType go nmap <C-G>F :GoImports<CR>
  	autocmd FileType go nmap <C-G>h :GoDoc<CR>
  	autocmd FileType go nmap <C-G>i :GoImplements<CR>
  	autocmd FileType go nmap <C-G>I :GoInstall<CR>
- 	autocmd FileType go nmap <C-G>l :GoMetaLinter<CR>
+ 	autocmd FileType go nmap <C-G>l :GoDecls<CR>
  	autocmd FileType go nmap <C-G>L :GoDeclsDir<CR>
+ 	autocmd FileType go nmap <C-G>m :GoMetaLinter<CR>
  	autocmd FileType go nmap <C-G>n :GoInfo<CR>
  	autocmd FileType go nmap <C-G>o :GoCoverage<CR>
  	autocmd FileType go nmap <C-G>p :GoDeps<CR>
