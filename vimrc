@@ -245,6 +245,8 @@ nnoremap N                Nzzzv
 
 vnoremap < <gv
 vnoremap > >gv
+
+nmap     =j :%!python -m json.tool<CR>
 " --------------------------------------------------
 " ACTIONS
 " --------------------------------------------------
