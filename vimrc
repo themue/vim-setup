@@ -274,6 +274,7 @@ if has("autocmd")
  	autocmd FileType go nmap <C-G>m :GoMetaLinter<CR>
  	autocmd FileType go nmap <C-G>n :GoInfo<CR>
  	autocmd FileType go nmap <C-G>o :GoCoverage<CR>
+ 	autocmd FileType go nmap <C-G>O :GoCoverageBrowser<CR>
  	autocmd FileType go nmap <C-G>p :GoDeps<CR>
  	autocmd FileType go nmap <C-G>P :GoChannelPeers<CR>
  	autocmd FileType go nmap <C-G>r :GoReferrers<CR>
