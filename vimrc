@@ -10,6 +10,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'chrisbra/vim-diff-enhanced'
 Plug 'airblade/vim-gitgutter'
+Plug 'szw/vim-maximizer'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-scriptease'
@@ -222,6 +223,15 @@ nnoremap <C-K>j       :bprev<CR>
 nnoremap <C-K>l       :tabnext<CR>
 nnoremap <C-K>h       :tabprev<CR>
 nnoremap <C-K><space> :nohlsearch<CR>
+"
+" Ctrl-W
+"
+nnoremap <C-W>h :sp<CR>
+nnoremap <C-W>m :MaximizerToggle<CR>
+nnoremap <C-W>o :only<CR>
+nnoremap <C-W>w :Windows<CR>
+nnoremap <C-W>v :vsp<CR>
+
 "
 " Edit and source .vimrc
 "
