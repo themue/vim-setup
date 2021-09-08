@@ -15,7 +15,7 @@ let g:colors_name = 'muedark'
 " Settings for colored terminals.
 "
 if &t_Co >= 256
-  hi Normal           ctermbg=none ctermfg=249  cterm=none
+  hi Normal           ctermbg=none ctermfg=250  cterm=none
   hi Comment          ctermbg=none ctermfg=33   cterm=none
   hi Statement        ctermbg=none ctermfg=173  cterm=none
   hi Identifier       ctermbg=none ctermfg=40   cterm=none
