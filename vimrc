@@ -227,8 +227,10 @@ nnoremap <C-K><space> :nohlsearch<CR>
 " Ctrl-W
 "
 nnoremap <C-W>h :sp<CR>
+nnoremap <C-W>n :next<CR>
 nnoremap <C-W>m :MaximizerToggle<CR>
 nnoremap <C-W>o :only<CR>
+nnoremap <C-W>p :previous<CR>
 nnoremap <C-W>w :Windows<CR>
 nnoremap <C-W>v :vsp<CR>
 
