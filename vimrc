@@ -90,18 +90,19 @@ let g:SuperTabDefaultCompletionType = "<C-x><C-o>"
 let g:airline#extensions#tabline#enabled = 0
 let g:airline_theme = "sol"
 
-let g:go_fmt_command = "goimports"
 let g:go_auto_type_info = 1
 let g:go_metalinter_autosave = 0
 let g:go_updatetime = 500
 let g:go_def_mode = 'gopls'
 let g:go_info_mode = 'gopls'
+let g:go_fmt_command = "gopls"
 let g:go_list_type = "quickfix"
 let g:go_list_height = 10
 let g:go_test_show_name = 1
 let g:go_test_timeout = '60s'
 let g:go_term_enabled = 1
 let g:go_term_mode = "split"
+let g:go_doc_balloon = 1
 " --------------------------------------------------
 " CONDITIONAL SETTINGS
 " --------------------------------------------------
@@ -209,11 +210,12 @@ nnoremap <C-P>z :terminal<CR>
 "
 " Ctrl-K
 "
+nnoremap <C-K>c       :set cuc!<CR>
 nnoremap <C-K>s       //gc<LEFT><LEFT><LEFT>
 nnoremap <C-K>f       /\<<C-r><C-w>\>//gc<CR>
 nnoremap <C-K>r       :%s///gc<LEFT><LEFT><LEFT><LEFT>
 nnoremap <C-K>w       :%s/\<<C-r><C-w>\>//g<LEFT><LEFT>
-nnoremap <C-K>c       :%S/\<<C-r><C-w>\>//g<LEFT><LEFT>
+nnoremap <C-K>W       :%S/\<<C-r><C-w>\>//g<LEFT><LEFT>
 nnoremap <C-K>g       :Ag <C-r><C-w><CR>
 nnoremap <C-K>a       :Ag<SPACE>
 nnoremap <C-K>n       :cnext<CR>
