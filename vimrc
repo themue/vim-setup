@@ -76,7 +76,8 @@ syntax on
 let mapleader = "+"
 let maplocalleader = "#"
 
-let $FZF_DEFAULT_COMMAND = 'ag -g "" --ignore /vendor/'
+" let $FZF_DEFAULT_COMMAND = 'fzf --preview "bat {}"'
+let $FZF_DEFAULT_OPTS = '--preview "bat --style=numbers --color=always --line-range :500 {}"'
 
 let g:netrw_banner = 0
 let g:netrw_liststyle = 3
@@ -195,6 +196,7 @@ nnoremap <C-P>a :TagbarToggle<CR>
 nnoremap <C-P>b :Gblame<CR>
 nnoremap <C-P>c :Commits<CR>
 nnoremap <C-P>f :GFiles<CR>
+nnoremap <C-P>g :GFiles?<CR>
 nnoremap <C-P>h :History:<CR>
 nnoremap <C-P>l :Lines<CR>
 nnoremap <C-P>m :Commands<CR>
@@ -225,6 +227,7 @@ nnoremap <C-K>j       :bprev<CR>
 nnoremap <C-K>l       :tabnext<CR>
 nnoremap <C-K>h       :tabprev<CR>
 nnoremap <C-K><space> :nohlsearch<CR>
+nnoremap <C-K>J       :%!python -m json.tool<CR>
 "
 " Ctrl-W
 "
@@ -259,8 +262,6 @@ nnoremap N                Nzzzv
 
 vnoremap < <gv
 vnoremap > >gv
-
-nmap     =j :%!python -m json.tool<CR>
 " --------------------------------------------------
 " ACTIONS
 " --------------------------------------------------
@@ -269,7 +270,7 @@ if has("autocmd")
 	autocmd BufWritePre * :%s/\s\+$//e
 	autocmd BufReadPost * if line("'\"") | exe "'\"" | endif
 	" Go / vim-go.
- 	autocmd FileType go nmap <C-G>a :GoAddTags<CR>
+ 	autocmd FileType go nmap <C-G>a :GoAddTabs<CR>
  	autocmd FileType go nmap <C-G>A :GoRemoveTags<CR>
  	autocmd FileType go nmap <C-G>b :GoBuild<CR>
  	autocmd FileType go nmap <C-G>B :GoTestCompile<CR>
