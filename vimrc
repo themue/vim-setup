@@ -76,7 +76,6 @@ syntax on
 let mapleader = "+"
 let maplocalleader = "#"
 
-" let $FZF_DEFAULT_COMMAND = 'fzf --preview "bat {}"'
 let $FZF_DEFAULT_OPTS = '--preview "bat --style=numbers --color=always --line-range :500 {}"'
 
 let g:netrw_banner = 0
@@ -195,6 +194,7 @@ vnoremap K :m '<-2<CR>gv=gv
 nnoremap <C-P>a :TagbarToggle<CR>
 nnoremap <C-P>b :Gblame<CR>
 nnoremap <C-P>c :Commits<CR>
+nnoremap <C-P>d :dig<CR>
 nnoremap <C-P>f :GFiles<CR>
 nnoremap <C-P>g :GFiles?<CR>
 nnoremap <C-P>h :History:<CR>
@@ -210,24 +210,27 @@ nnoremap <C-P>w :Windows<CR>
 inoremap <C-P>x :CloseTerminals
 nnoremap <C-P>z :terminal<CR>
 "
-" Ctrl-K
+" Ctrl-S
 "
-nnoremap <C-K>c       :set cuc!<CR>
-nnoremap <C-K>s       //gc<LEFT><LEFT><LEFT>
-nnoremap <C-K>f       /\<<C-r><C-w>\>//gc<CR>
-nnoremap <C-K>r       :%s///gc<LEFT><LEFT><LEFT><LEFT>
-nnoremap <C-K>w       :%s/\<<C-r><C-w>\>//g<LEFT><LEFT>
-nnoremap <C-K>W       :%S/\<<C-r><C-w>\>//g<LEFT><LEFT>
-nnoremap <C-K>g       :Ag <C-r><C-w><CR>
-nnoremap <C-K>a       :Ag<SPACE>
-nnoremap <C-K>n       :cnext<CR>
-nnoremap <C-K>p       :cprev<CR>
-nnoremap <C-K>k       :bnext<CR>
-nnoremap <C-K>j       :bprev<CR>
-nnoremap <C-K>l       :tabnext<CR>
-nnoremap <C-K>h       :tabprev<CR>
-nnoremap <C-K><space> :nohlsearch<CR>
-nnoremap <C-K>J       :%!python -m json.tool<CR>
+nnoremap <C-S>s       //gc<LEFT><LEFT><LEFT>
+nnoremap <C-S>f       /\<<C-r><C-w>\>//gc<CR>
+nnoremap <C-S>r       :%s///gc<LEFT><LEFT><LEFT><LEFT>
+nnoremap <C-S>w       :%s/\<<C-r><C-w>\>//g<LEFT><LEFT>
+nnoremap <C-S>W       :%S/\<<C-r><C-w>\>//g<LEFT><LEFT>
+nnoremap <C-S>g       :Ag <C-r><C-w><CR>
+nnoremap <C-S>a       :Ag<SPACE>
+nnoremap <C-S><space> :nohlsearch<CR>
+nnoremap <C-S>J       :%!python -m json.tool<CR>
+"
+" Ctrl-T
+"
+nnoremap <C-T>c :set cuc!<CR>
+nnoremap <C-T>n :cnext<CR>
+nnoremap <C-T>p :cprev<CR>
+nnoremap <C-T>k :bnext<CR>
+nnoremap <C-T>j :bprev<CR>
+nnoremap <C-T>l :tabnext<CR>
+nnoremap <C-T>h :tabprev<CR>
 "
 " Ctrl-W
 "
