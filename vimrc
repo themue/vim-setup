@@ -4,7 +4,8 @@
 call plug#begin('~/.vim/plugged')
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'ervandew/supertab'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Plug 'ervandew/supertab'
 Plug 'preservim/tagbar'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -85,7 +86,7 @@ let g:netrw_altv = 1
 let g:netrw_winsize = 25
 
 let g:deoplete#enable_at_startup = 1
-let g:SuperTabDefaultCompletionType = "<C-x><C-o>"
+" let g:SuperTabDefaultCompletionType = "<C-x><C-o>"
 
 let g:airline#extensions#tabline#enabled = 0
 let g:airline_theme = "sol"
@@ -170,6 +171,9 @@ command! MkTags          noautocmd !gotags -R -sort * > tags
 " --------------------------------------------------
 " KEY MAPPINGS
 " --------------------------------------------------
+inoremap <silent><expr> <TAB> pumvisible() ? "\<C-n>" : <SID>check_back_space() ? "\<TAB>" : coc#refresh()
+inoremap <expr><S-TAB>        pumvisible() ? "\<C-p>" : "\<C-h>"
+inoremap <silent><expr> <c-@> coc#refresh()
 "
 " Yank and paste
 "
