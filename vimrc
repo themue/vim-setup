@@ -5,7 +5,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-" Plug 'ervandew/supertab'
+Plug 'amiralies/coc-elixir', {'do': 'yarn install && yarn prepack'}
 Plug 'preservim/tagbar'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -17,6 +17,8 @@ Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-scriptease'
 Plug 'tpope/vim-sensible'
 Plug 'fatih/vim-go'
+Plug 'elixir-editors/vim-elixir'
+Plug 'mhinz/vim-mix-format'
 Plug 'guns/xterm-color-table.vim'
 call plug#end()
 " --------------------------------------------------
@@ -28,7 +30,7 @@ filetype plugin indent off
 set autoread
 set autowrite
 set autoindent
-
+set wildmenu
 set cursorline
 set hidden
 set hlsearch
@@ -86,7 +88,6 @@ let g:netrw_altv = 1
 let g:netrw_winsize = 25
 
 let g:deoplete#enable_at_startup = 1
-" let g:SuperTabDefaultCompletionType = "<C-x><C-o>"
 
 let g:airline#extensions#tabline#enabled = 0
 let g:airline_theme = "sol"
@@ -104,6 +105,8 @@ let g:go_test_timeout = '60s'
 let g:go_term_enabled = 1
 let g:go_term_mode = "split"
 let g:go_doc_balloon = 1
+
+let g:mix_format_on_save = 1
 " --------------------------------------------------
 " CONDITIONAL SETTINGS
 " --------------------------------------------------
@@ -171,8 +174,19 @@ command! MkTags          noautocmd !gotags -R -sort * > tags
 " --------------------------------------------------
 " KEY MAPPINGS
 " --------------------------------------------------
-inoremap <silent><expr> <TAB> pumvisible() ? "\<C-n>" : <SID>check_back_space() ? "\<TAB>" : coc#refresh()
-inoremap <expr><S-TAB>        pumvisible() ? "\<C-p>" : "\<C-h>"
+"
+"  COC
+"
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~ '\s'
+endfunction
+
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 inoremap <silent><expr> <c-@> coc#refresh()
 "
 " Yank and paste
@@ -192,6 +206,15 @@ inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 "
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
+"
+" Ctrl-C
+"
+nnoremap <C-C>p <Plug>(coc-diagnostic-prev)
+nnoremap <C-C>n <Plug>(coc-diagnostic-next)
+nnoremap <C-C>d <Plug>(coc-definition)
+nnoremap <C-C>y <Plug>(coc-type-definition)
+nnoremap <C-C>i <Plug>(coc-implementation)
+nnoremap <C-C>r <Plug>(coc-references)
 "
 " Ctrl-P
 "
@@ -224,6 +247,8 @@ nnoremap <C-S>W       :%S/\<<C-r><C-w>\>//g<LEFT><LEFT>
 nnoremap <C-S>g       :Ag <C-r><C-w><CR>
 nnoremap <C-S>a       :Ag<SPACE>
 nnoremap <C-S><space> :nohlsearch<CR>
+nnoremap <C-S>j       :jumps<CR>
+nnoremap <C-S>c       :clear<CR>
 nnoremap <C-S>J       :%!python -m json.tool<CR>
 "
 " Ctrl-T
