@@ -5,7 +5,6 @@ call plug#begin('~/.vim/plugged')
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'amiralies/coc-elixir', {'do': 'yarn install && yarn prepack'}
 Plug 'preservim/tagbar'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -17,7 +16,6 @@ Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-scriptease'
 Plug 'tpope/vim-sensible'
 Plug 'fatih/vim-go'
-Plug 'elixir-editors/vim-elixir'
 Plug 'mhinz/vim-mix-format'
 Plug 'guns/xterm-color-table.vim'
 call plug#end()
