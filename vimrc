@@ -71,7 +71,7 @@ set noswapfile
 set nowritebackup
 
 filetype plugin indent on
-colorscheme torte
+colorscheme muedark
 syntax on
 
 let mapleader = "+"
