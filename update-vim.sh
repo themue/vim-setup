@@ -4,7 +4,7 @@
 #
 echo "Updating the vim setup"
 git pull
-cp vimrc ~/.vimrc
+cp vimrc-$1 ~/.vimrc
 cp muedark.vim ~/.vim/colors
 echo "Done!"
 #

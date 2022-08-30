@@ -1,0 +1,262 @@
+" ==================================================
+" .vimrc FOR ADMINISTRATION
+" ==================================================
+call plug#begin('~/.vim/plugged')
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+Plug 'preservim/tagbar'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'chrisbra/vim-diff-enhanced'
+Plug 'airblade/vim-gitgutter'
+Plug 'szw/vim-maximizer'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-dispatch'
+Plug 'tpope/vim-scriptease'
+Plug 'tpope/vim-sensible'
+Plug 'mhinz/vim-mix-format'
+Plug 'guns/xterm-color-table.vim'
+call plug#end()
+" --------------------------------------------------
+" SETTINGS
+" --------------------------------------------------
+filetype off
+filetype plugin indent off
+
+set autoread
+set autowrite
+set autoindent
+set wildmenu
+set cursorline
+set hidden
+set hlsearch
+set incsearch
+set number
+set showcmd
+set smartcase
+set splitright
+set splitbelow
+set splitright
+set splitbelow
+set ttyfast
+
+set backspace=indent,eol,start
+set omnifunc=syntaxcomplete#Complete
+set completeopt-=preview
+set foldmethod=syntax
+set foldnestmax=4
+set foldlevel=0
+set shell=zsh
+set mouse=a
+set ttymouse=sgr
+set ttyscroll=3
+set laststatus=2
+set encoding=utf-8
+set shiftwidth=4
+set tabstop=4
+set timeoutlen=2000
+set t_Co=256
+set rtp+=/usr/local/opt/fzf
+set signcolumn=number
+set viminfo='1000,f1
+
+set noexpandtab
+set nobackup
+set nocompatible
+set nofoldenable
+set noignorecase
+set noswapfile
+set nowritebackup
+
+filetype plugin indent on
+colorscheme muedark
+syntax on
+
+let mapleader = "+"
+let maplocalleader = "#"
+
+let $FZF_DEFAULT_OPTS = '--preview "bat --style=numbers --color=always --line-range :500 {}"'
+
+let g:netrw_banner = 0
+let g:netrw_liststyle = 3
+let g:netrw_browse_split = 4
+let g:netrw_altv = 1
+let g:netrw_winsize = 25
+
+let g:deoplete#enable_at_startup = 1
+
+let g:airline#extensions#tabline#enabled = 0
+let g:airline_theme = "sol"
+
+let g:mix_format_on_save = 1
+" --------------------------------------------------
+" CONDITIONAL SETTINGS
+" --------------------------------------------------
+if has("multi_byte")
+    if &termencoding == ""
+        let &termencoding = &encoding
+    endif
+    set encoding=utf-8
+    setglobal fileencoding=utf-8
+endif
+" --------------------------------------------------
+" FUNCTIONS AND COMMANDS
+" --------------------------------------------------
+function! g:KbdGerman()
+    iunmap ü
+    iunmap ö
+    iunmap ä
+    iunmap Ö
+    iunmap Ä
+    iunmap ß
+endfunction
+
+function! g:KbdProgramming()
+    imap ü <C-[>
+    imap ö [
+    imap ä ]
+    imap Ö {
+    imap Ä }
+    imap ß /
+endfunction
+
+function! g:CheckTerminal(num)
+	if bufexists(str2nr(a:num))
+		exec ":buffer " . a:num
+		if &buftype == 'terminal'
+			exec 'bd'
+		endif
+	endif
+endfunction
+
+function! g:CloseTerminals()
+	let result = filter(range(1, bufnr('$')), 'CheckTerminal(v:val)')
+endfunction
+
+command! KbdGerman       :call KbdGerman()
+command! KbdProgramming  :call KbdProgramming()
+command! CloseTerminals  :call CloseTerminals()
+command! Todo            noautocmd vimgrep /TODO\|FIXME/j ** | cw
+command! MkTags          noautocmd !gotags -R -sort * > tags
+" --------------------------------------------------
+" KEY MAPPINGS
+" --------------------------------------------------
+
+"
+" Yank and paste
+"
+vnoremap <leader>y  "+y
+nnoremap <leader>Y  "+yg_
+nnoremap <leader>y  "+y
+nnoremap <leader>yy "+yy
+nnoremap <leader>p  "+p
+nnoremap <leader>P  "+P
+vnoremap <leader>p  "+p
+vnoremap <leader>P  "+P
+"
+" Move visual block
+"
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
+"
+" Ctrl-P
+"
+nnoremap <C-P>a :TagbarToggle<CR>
+nnoremap <C-P>b :Gblame<CR>
+nnoremap <C-P>c :Commits<CR>
+nnoremap <C-P>d :dig<CR>
+nnoremap <C-P>f :GFiles<CR>
+nnoremap <C-P>g :GFiles?<CR>
+nnoremap <C-P>h :History:<CR>
+nnoremap <C-P>l :Lines<CR>
+nnoremap <C-P>m :Commands<CR>
+nnoremap <C-P>n :BCommits<CR>
+nnoremap <C-P>o :Files<CR>
+nnoremap <C-P>p :Buffers<CR>
+nnoremap <C-P>q :qa<CR>
+nnoremap <C-P>t :BTags<CR>
+nnoremap <C-P>v :Vexplore<CR>
+nnoremap <C-P>w :Windows<CR>
+inoremap <C-P>x :CloseTerminals
+nnoremap <C-P>z :terminal<CR>
+"
+" Ctrl-S
+"
+nnoremap <C-S>s       //gc<LEFT><LEFT><LEFT>
+nnoremap <C-S>f       /\<<C-r><C-w>\>//gc<CR>
+nnoremap <C-S>r       :%s///gc<LEFT><LEFT><LEFT><LEFT>
+nnoremap <C-S>w       :%s/\<<C-r><C-w>\>//g<LEFT><LEFT>
+nnoremap <C-S>W       :%S/\<<C-r><C-w>\>//g<LEFT><LEFT>
+nnoremap <C-S>y       :%sno/<C-r><C-o>"//g<LEFT><LEFT>
+nnoremap <C-S>g       :Ag <C-r><C-w><CR>
+nnoremap <C-S>a       :Ag<SPACE>
+nnoremap <C-S><space> :nohlsearch<CR>
+nnoremap <C-S>j       :jumps<CR>
+nnoremap <C-S>c       :clear<CR>
+nnoremap <C-S>J       :%!python -m json.tool<CR>
+"
+" Ctrl-T
+"
+nnoremap <C-T>c :set cuc!<CR>
+nnoremap <C-T>n :cnext<CR>
+nnoremap <C-T>p :cprev<CR>
+nnoremap <C-T>k :bnext<CR>
+nnoremap <C-T>j :bprev<CR>
+nnoremap <C-T>l :tabnext<CR>
+nnoremap <C-T>h :tabprev<CR>
+"
+" Ctrl-W
+"
+nnoremap <C-W>h :sp<CR>
+nnoremap <C-W>n :next<CR>
+nnoremap <C-W>m :MaximizerToggle<CR>
+nnoremap <C-W>o :only<CR>
+nnoremap <C-W>p :previous<CR>
+nnoremap <C-W>w :Windows<CR>
+nnoremap <C-W>v :vsp<CR>
+
+"
+" Edit and source .vimrc
+"
+nmap <leader>ev :tabedit $MYVIMRC<CR>
+nmap <leader>sv :source $MYVIMRC<CR>
+"
+" Misc
+"
+inoremap <leader>ww       <ESC>:wa<CR>
+nnoremap <leader>ww       :wa<CR>
+nmap     <leader>xx       :bdelete<CR>
+nmap     <leader>cc       :cclose<CR>
+nmap     <leader>oo       :only<CR>
+nmap     <leader>tt       :terminal<CR>
+nmap     <leader>qq       :qa<CR>
+nnoremap <leader><space>  :nohlsearch<CR>
+nnoremap <leader>N        :setlocal number!<CR>
+inoremap jj               <ESC>
+nnoremap n                nzzzv
+nnoremap N                Nzzzv
+
+vnoremap < <gv
+vnoremap > >gv
+" --------------------------------------------------
+" ACTIONS
+" --------------------------------------------------
+if has("autocmd")
+	" Write and read buffer.
+	autocmd BufWritePre * :%s/\s\+$//e
+	autocmd BufReadPost * if line("'\"") | exe "'\"" | endif
+endif
+" Keep undo history across sessions by storing it in a file.
+if has('persistent_undo')
+	let vimdir = '$HOME/.vim'
+	let vimundodir = expand(vimdir . '/undodir')
+	call system('mkdir ' . vimdir)
+	call system('mkdir ' . vimundodir)
+	let &undodir = vimundodir
+	set undofile
+endif
+" Standard keyboard for programming.
+call KbdProgramming()
+" ==================================================
+" EOF
+" ==================================================

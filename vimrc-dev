@@ -1,5 +1,5 @@
 " ==================================================
-" .vimrc / init.vim
+" .vimrc FOR DEVELOPMENT
 " ==================================================
 call plug#begin('~/.vim/plugged')
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
