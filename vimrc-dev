@@ -2,9 +2,10 @@
 " .vimrc FOR DEVELOPMENT
 " ==================================================
 call plug#begin('~/.vim/plugged')
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}
 Plug 'junegunn/fzf.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'dense-analysis/neural'
 Plug 'preservim/tagbar'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -105,6 +106,14 @@ let g:go_term_mode = "split"
 let g:go_doc_balloon = 1
 
 let g:mix_format_on_save = 1
+
+let g:neural = {
+\   'source': {
+\       'openai': {
+\           'api_key': $OPENAI_API_KEY,
+\       },
+\   },
+\}
 " --------------------------------------------------
 " CONDITIONAL SETTINGS
 " --------------------------------------------------
