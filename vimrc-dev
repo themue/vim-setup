@@ -4,8 +4,6 @@
 call plug#begin('~/.vim/plugged')
 Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}
 Plug 'junegunn/fzf.vim'
-Plug 'github/copilot.vim'
-Plug 'madox2/vim-ai'
 Plug 'preservim/tagbar'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -106,14 +104,6 @@ let g:go_term_mode = "split"
 let g:go_doc_balloon = 1
 
 let g:mix_format_on_save = 1
-
-let g:neural = {
-\   'source': {
-\       'openai': {
-\           'api_key': $OPENAI_API_KEY,
-\       },
-\   },
-\}
 " --------------------------------------------------
 " CONDITIONAL SETTINGS
 " --------------------------------------------------
@@ -197,16 +187,6 @@ vnoremap <leader>P  "+P
 "
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
-"
-" Ctrl-A
-"
-nnoremap <C-A>a :AI<CR>
-xnoremap <C-A>a :AI<CR>
-xnoremap <C-A>s :AIEdit fix grammar and spelling<CR>
-nnoremap <C-A>s :AIEdit fix grammar and spelling<CR>
-xnoremap <C-A>c :AIChat<CR>
-nnoremap <C-A>c :AIChat<CR>
-nnoremap <C-A>r :AIRedo<CR>
 "
 " Ctrl-P
 "
